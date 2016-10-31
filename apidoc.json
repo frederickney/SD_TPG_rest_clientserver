@@ -5,17 +5,8 @@
   "title": "Custom apiDoc browser title",
   "url" : "https://api.github.com/v1",
   "header": {
-    "title": "My own header title",
-    "filename": "header.md"
+    "title": "TPG rest project"
   },
-  "footer": {
-    "title": "My own footer title",
-    "filename": "footer.md"
-  },
-  "order": [
-    "GetUser",
-    "PostUser"
-  ],
   "template": {
   	"withCompare": true,
   	"withGenerator": true
