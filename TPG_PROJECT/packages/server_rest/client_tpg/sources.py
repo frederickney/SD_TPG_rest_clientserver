@@ -1,7 +1,4 @@
 __author__ = 'Frederick NEY & Stephane Overlen'
-import sys
-import struct
-import os
 
 
 AUTH_KEY = "hZELIENF7EHRoHL2rY7i"
