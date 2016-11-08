@@ -3,8 +3,7 @@ __author__ = 'Frederick NEY & Stephane Overlen'
 from sources import *
 import pymysql as mysql
 import requests
-
-import xml.etree.ElementTree as xmlparser
+import lxml.etree as xmlparser
 
 
 def mysql_connection():
@@ -30,10 +29,16 @@ def mysql_query(query):
 # http://prod.ivtr-od.tpg.ch/v1/GetDisruptions?key=hZELIENF7EHRoHL2rY7i
 def get_distribution(datatype):
     url = "http://" + TPG_SERVER + "/" + SERVER_VERSION + "/GetDisruptions"
-    param = {'key': AUTH_KEY}
+    param = {KEY: AUTH_KEY}
     if not None == datatype:
         url = url + "." + datatype
-    return requests.get(url, param).content
+    if "json" == datatype:
+        return requests.get(url, param).json()
+    elif "xml" == datatype:
+        root = xmlparser.fromstring(requests.get(url, param).content)
+        return xmlparser.tostring(root, pretty_print=True)
+    else:
+        return requests.get(url, param).json()
 
 
 # request example
@@ -53,8 +58,14 @@ def get_stops(datatype, request_code, request_data):
     if not None == datatype:
         url = url + "." + datatype
     for data in request_data:
-        param = {'key': AUTH_KEY, request_code: data}
-        result .append(requests.get(url, param).content)
+        param = {KEY: AUTH_KEY, request_code: data}
+        if "json" == datatype:
+            result .append(requests.get(url, param).json())
+        elif "xml" == datatype:
+            root = xmlparser.fromstring(requests.get(url, param).content)
+            result.append(xmlparser.tostring(root, pretty_print=True))
+        else:
+            result .append(requests.get(url, param).json())
     return result
 
 
@@ -68,8 +79,14 @@ def get_physical_stops(datatype, request_code, request_data):
     if not None == datatype:
         url = url + "." + datatype
     for data in request_data:
-        param = {'key': AUTH_KEY, request_code: data}
-        result .append(requests.get(url, param).content)
+        param = {KEY: AUTH_KEY, request_code: data}
+        if "json" == datatype:
+            result .append(requests.get(url, param).json())
+        elif "xml" == datatype:
+            root = xmlparser.fromstring(requests.get(url, param).content)
+            result.append(xmlparser.tostring(root, pretty_print=True))
+        else:
+            result .append(requests.get(url, param).json())
     return result
 
 
@@ -88,6 +105,12 @@ def get_next_departure(datatype, request_code, request_data):
     if not None == datatype:
         url = url + "." + datatype
     for data in request_data:
-        param = {'key': AUTH_KEY, request_code: data}
-        result .append(requests.get(url, param).content)
+        param = {KEY: AUTH_KEY, request_code: data}
+        if "json" == datatype:
+            result .append(requests.get(url, param).json())
+        elif "xml" == datatype:
+            root = xmlparser.fromstring(requests.get(url, param).content)
+            result.append(xmlparser.tostring(root, pretty_print=True))
+        else:
+            result .append(requests.get(url, param).json())
     return result
