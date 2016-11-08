@@ -3,7 +3,9 @@ __author__ = 'Frederick NEY & Stephane Overlen'
 from sources import *
 import pymysql as mysql
 import requests
-import lxml.etree as xmlparser
+import xml.etree.ElementTree as xmlparser
+import itertools
+import json
 
 
 def mysql_connection():
@@ -36,7 +38,7 @@ def get_distribution(datatype):
         return requests.get(url, param).json()
     elif "xml" == datatype:
         root = xmlparser.fromstring(requests.get(url, param).content)
-        return xmlparser.tostring(root, pretty_print=True)
+        return xmlparser.tostring(root, encoding='utf8', method='xml')
     else:
         return requests.get(url, param).json()
 
@@ -53,7 +55,7 @@ def get_distribution(datatype):
 # using line code
 # http://prod.ivtr-od.tpg.ch/v1/GetStops?key=hZELIENF7EHRoHL2rY7i&GetStops?lineCode=12
 def get_stops(datatype, request_code, request_data):
-    url = "http://" + TPG_SERVER + "/" + SERVER_VERSION + "/GetDisruptions"
+    url = "http://" + TPG_SERVER + "/" + SERVER_VERSION + "/GetStops"
     result = []
     if not None == datatype:
         url = url + "." + datatype
@@ -63,7 +65,24 @@ def get_stops(datatype, request_code, request_data):
             result .append(requests.get(url, param).json())
         elif "xml" == datatype:
             root = xmlparser.fromstring(requests.get(url, param).content)
-            result.append(xmlparser.tostring(root, pretty_print=True))
+            result.append(xmlparser.tostring(root, encoding='utf8', method='xml'))
+        else:
+            result .append(requests.get(url, param).json())
+    return result
+
+
+def get_localisation(latitudes, longitudes, datatype):
+    url = "http://" + TPG_SERVER + "/" + SERVER_VERSION + "/GetStops"
+    result = []
+    if not None == datatype:
+        url = url + "." + datatype
+    for latitude, longitude in itertools.product(latitudes, longitudes):
+        param = {KEY: AUTH_KEY, "longitude": longitude, "latitude": latitude}
+        if "json" == datatype:
+            result .append(requests.get(url, param).json())
+        elif "xml" == datatype:
+            root = xmlparser.fromstring(requests.get(url, param).content)
+            result.append(xmlparser.tostring(root, encoding='utf8', method='xml'))
         else:
             result .append(requests.get(url, param).json())
     return result
@@ -74,7 +93,7 @@ def get_stops(datatype, request_code, request_data):
 # using stop name
 # http://prod.ivtr-od.tpg.ch/v1/GetPhysicalStops?key=hZELIENF7EHRoHL2rY7i&stopName=gare cornavin
 def get_physical_stops(datatype, request_code, request_data):
-    url = "http://" + TPG_SERVER + "/" + SERVER_VERSION + "/GetDisruptions"
+    url = "http://" + TPG_SERVER + "/" + SERVER_VERSION + "/GetPhysicalStops"
     result = []
     if not None == datatype:
         url = url + "." + datatype
@@ -84,7 +103,7 @@ def get_physical_stops(datatype, request_code, request_data):
             result .append(requests.get(url, param).json())
         elif "xml" == datatype:
             root = xmlparser.fromstring(requests.get(url, param).content)
-            result.append(xmlparser.tostring(root, pretty_print=True))
+            result.append(xmlparser.tostring(root, encoding='utf8', method='xml'))
         else:
             result .append(requests.get(url, param).json())
     return result
@@ -100,7 +119,7 @@ def get_physical_stops(datatype, request_code, request_data):
 # using stop code
 # http://prod.ivtr-od.tpg.ch/v1/GetNextDepartures?key=hZELIENF7EHRoHL2rY7i&stopCode=ACCM
 def get_next_departure(datatype, request_code, request_data):
-    url = "http://" + TPG_SERVER + "/" + SERVER_VERSION + "/GetDisruptions"
+    url = "http://" + TPG_SERVER + "/" + SERVER_VERSION + "/GetNextDepartures"
     result = []
     if not None == datatype:
         url = url + "." + datatype
@@ -110,7 +129,7 @@ def get_next_departure(datatype, request_code, request_data):
             result .append(requests.get(url, param).json())
         elif "xml" == datatype:
             root = xmlparser.fromstring(requests.get(url, param).content)
-            result.append(xmlparser.tostring(root, pretty_print=True))
+            result.append(xmlparser.tostring(root, encoding='utf8', method='xml'))
         else:
             result .append(requests.get(url, param).json())
     return result
