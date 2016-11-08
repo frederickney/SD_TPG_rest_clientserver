@@ -3,7 +3,6 @@ __author__ = 'Frederick NEY & Stephane Overlen'
 from .sources import *
 import pymysql as mysql
 import requests
-import xml.etree.ElementTree as xmlparser
 
 
 def mysql_connection():
@@ -48,10 +47,13 @@ def get_distribution(datatype):
 # http://prod.ivtr-od.tpg.ch/v1/GetStops?key=hZELIENF7EHRoHL2rY7i&GetStops?lineCode=12
 def get_stops(datatype, request_code, request_data):
     url = "http://" + TPG_SERVER + "/" + SERVER_VERSION + "/GetDisruptions"
-    param = {'key': AUTH_KEY}
+    result = []
     if not None == datatype:
         url = url + "." + datatype
-    return requests.get(url, param)
+    for data in request_data:
+        param = {'key': AUTH_KEY, request_code: data}
+        result .append(requests.get(url, param))
+    return result
 
 
 # using stop code
@@ -60,12 +62,13 @@ def get_stops(datatype, request_code, request_data):
 # http://prod.ivtr-od.tpg.ch/v1/GetPhysicalStops?key=hZELIENF7EHRoHL2rY7i&stopName=gare cornavin
 def get_physical_stops(datatype, request_code, request_data):
     url = "http://" + TPG_SERVER + "/" + SERVER_VERSION + "/GetDisruptions"
+    result = []
     if not None == datatype:
         url = url + "." + datatype
     for data in request_data:
         param = {'key': AUTH_KEY, request_code: data}
-        result = requests.get(url, param)
-    return
+        result .append(requests.get(url, param))
+    return result
 
 
 # request example
@@ -79,9 +82,10 @@ def get_physical_stops(datatype, request_code, request_data):
 # http://prod.ivtr-od.tpg.ch/v1/GetNextDepartures?key=hZELIENF7EHRoHL2rY7i&stopCode=ACCM
 def get_next_departure(datatype, request_code, request_data):
     url = "http://" + TPG_SERVER + "/" + SERVER_VERSION + "/GetDisruptions"
+    result = []
     if not None == datatype:
         url = url + "." + datatype
     for data in request_data:
         param = {'key': AUTH_KEY, request_code: data}
-        result = requests.get(url, param)
-    return
+        result .append(requests.get(url, param))
+    return result
