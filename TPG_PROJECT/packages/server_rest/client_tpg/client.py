@@ -5,7 +5,6 @@ import pymysql as mysql
 import requests
 import xml.etree.ElementTree as xmlparser
 import itertools
-import json
 
 
 def mysql_connection():
@@ -29,7 +28,7 @@ def mysql_query(query):
 
 # request example
 # http://prod.ivtr-od.tpg.ch/v1/GetDisruptions?key=hZELIENF7EHRoHL2rY7i
-def get_distribution(datatype):
+def get_distribution(datatype = None):
     url = "http://" + TPG_SERVER + "/" + SERVER_VERSION + "/GetDisruptions"
     param = {KEY: AUTH_KEY}
     if not None == datatype:
@@ -54,15 +53,25 @@ def get_distribution(datatype):
 # http://prod.ivtr-od.tpg.ch/v1/GetStops?key=hZELIENF7EHRoHL2rY7i&GetStops?latitude=46.218176&longitude=6.146445
 # using line code
 # http://prod.ivtr-od.tpg.ch/v1/GetStops?key=hZELIENF7EHRoHL2rY7i&GetStops?lineCode=12
-def get_stops(datatype, request_code, request_data):
+def get_stops(datatype = None, request_code = None, request_data = None):
     url = "http://" + TPG_SERVER + "/" + SERVER_VERSION + "/GetStops"
     result = []
     if not None == datatype:
         url = url + "." + datatype
-    for data in request_data:
-        param = {KEY: AUTH_KEY, request_code: data}
+    if not None == request_code and not None == request_data:
+        for data in request_data:
+            param = {KEY: AUTH_KEY, request_code: data}
+            if "json" == datatype:
+                result .append(requests.get(url, param).json())
+            elif "xml" == datatype:
+                root = xmlparser.fromstring(requests.get(url, param).content)
+                result.append(xmlparser.tostring(root, encoding='utf8', method='xml'))
+            else:
+                result .append(requests.get(url, param).json())
+    else:
+        param = {KEY: AUTH_KEY}
         if "json" == datatype:
-            result .append(requests.get(url, param).json())
+                result .append(requests.get(url, param).json())
         elif "xml" == datatype:
             root = xmlparser.fromstring(requests.get(url, param).content)
             result.append(xmlparser.tostring(root, encoding='utf8', method='xml'))
@@ -71,7 +80,7 @@ def get_stops(datatype, request_code, request_data):
     return result
 
 
-def get_localisation(latitudes, longitudes, datatype):
+def get_localisation(latitudes, longitudes, datatype = None):
     url = "http://" + TPG_SERVER + "/" + SERVER_VERSION + "/GetStops"
     result = []
     if not None == datatype:
@@ -92,7 +101,7 @@ def get_localisation(latitudes, longitudes, datatype):
 # http://prod.ivtr-od.tpg.ch/v1/GetPhysicalStops?key=hZELIENF7EHRoHL2rY7i&stopCode=ACCM
 # using stop name
 # http://prod.ivtr-od.tpg.ch/v1/GetPhysicalStops?key=hZELIENF7EHRoHL2rY7i&stopName=gare cornavin
-def get_physical_stops(datatype, request_code, request_data):
+def get_physical_stops(request_code, request_data, datatype = None,):
     url = "http://" + TPG_SERVER + "/" + SERVER_VERSION + "/GetPhysicalStops"
     result = []
     if not None == datatype:
