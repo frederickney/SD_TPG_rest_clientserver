@@ -1,8 +1,10 @@
 __author__ = 'Frederick NEY & Stephane Overlen'
 
-from .sources import *
+from sources import *
 import pymysql as mysql
 import requests
+
+import xml.etree.ElementTree as xmlparser
 
 
 def mysql_connection():
@@ -28,10 +30,10 @@ def mysql_query(query):
 # http://prod.ivtr-od.tpg.ch/v1/GetDisruptions?key=hZELIENF7EHRoHL2rY7i
 def get_distribution(datatype):
     url = "http://" + TPG_SERVER + "/" + SERVER_VERSION + "/GetDisruptions"
-    if None == datatype:
+    param = {'key': AUTH_KEY}
+    if not None == datatype:
         url = url + "." + datatype
-    url = url + "?key=" + AUTH_KEY
-    return requests.get(url)
+    return requests.get(url, param).content
 
 
 # request example
@@ -52,7 +54,7 @@ def get_stops(datatype, request_code, request_data):
         url = url + "." + datatype
     for data in request_data:
         param = {'key': AUTH_KEY, request_code: data}
-        result .append(requests.get(url, param))
+        result .append(requests.get(url, param).content)
     return result
 
 
@@ -67,7 +69,7 @@ def get_physical_stops(datatype, request_code, request_data):
         url = url + "." + datatype
     for data in request_data:
         param = {'key': AUTH_KEY, request_code: data}
-        result .append(requests.get(url, param))
+        result .append(requests.get(url, param).content)
     return result
 
 
@@ -87,5 +89,5 @@ def get_next_departure(datatype, request_code, request_data):
         url = url + "." + datatype
     for data in request_data:
         param = {'key': AUTH_KEY, request_code: data}
-        result .append(requests.get(url, param))
+        result .append(requests.get(url, param).content)
     return result
