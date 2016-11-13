@@ -1,3 +1,4 @@
+__author__ = 'Frederick NEY & Stephane Overlen'
 import Rest.User.db.mysqlressourses as mysql
 import hashlib
 

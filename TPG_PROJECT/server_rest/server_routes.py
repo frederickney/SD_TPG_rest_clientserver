@@ -1,12 +1,12 @@
-__author__ = 'admin_master'
+__author__ = 'Frederick NEY & Stephane Overlen'
 
 import re
 import argparse
 
 from flask import Flask, request, jsonify
 
-from Rest.User.user import *
-from Rest.TPG.client import *
+import Rest.User.user
+import Rest.TPG.client
 
 app = Flask(__name__)
 main_directory = None
