@@ -5,8 +5,9 @@ import argparse
 
 from flask import Flask, request, jsonify
 
-import Rest.User.user
-import Rest.TPG.client
+import Rest.User.user as user
+import Rest.TPG.client as client
+import Rest.User.db.mysqlressourses as mysql
 
 app = Flask(__name__)
 main_directory = None
@@ -41,10 +42,10 @@ def parse_datatype(datatype):
 @app.route('/list/stop/available', defaults={'datatype': None}, methods=['GET'])
 @app.route('/list/stop/available<path:datatype>', methods=['GET'])
 def list_available_stop(datatype):
-    id = request.json['id']
-    hash = request.json['hash']
-    if 1 == auth_cookie(id, hash):
-        return jsonify(stop_available=get_stops())
+    id = request.args.get['id']
+    hash = request.args.get['hash']
+    if 1 == user.auth_cookie(id, hash):
+        return jsonify(stop_available=client.get_stops())
     return jsonify(error="Bad request.")
 
 
@@ -64,10 +65,13 @@ def list_available_stop(datatype):
 @app.route('/list/stop/subscribed', methods=['GET'], defaults={'datatype': None})
 @app.route('/list/stop/subscribed<path:datatype>', methods=['GET'])
 def list_stop_subscribed(datatype):
-    print (request.args.get('id'))
-    print (request.args.get('username'))
-    return jsonify(id=1)
-
+    id = request.args.get['id']
+    hash = request.args.get['hash']
+    if 1 == user.auth_cookie(id, hash):
+        query = "Select * from subscriptions where id = %i"
+        mysql.mysql_query()
+        return jsonify(stop_subscribed=client.get_stops())
+    return jsonify(error="Bad request.")
 
 """
 @api {get} /list/stop/subscribed/nextDeparture?id=&hash=&stopName list_next_departure()
@@ -84,11 +88,13 @@ def list_stop_subscribed(datatype):
 @app.route('/list/stop/subscribed/nextDeparture', methods=['GET'], defaults={'datatype': None})
 @app.route('/list/stop/subscribed/nextDeparture<path:datatype>', methods=['GET'])
 def list_next_departure(datatype):
-    print (request.args.get('id'))
-    print (request.args.get('username'))
+    id = request.args.get['id']
+    hash = request.args.get['hash']
+    if 1 == user.auth_cookie(id, hash):
+        return
     print (request.args.get('stops'))
     print (request.args.get('stopInfo'))
-    return jsonify(id=1)
+    return jsonify(error="Bad request.")
 
 
 """
@@ -105,10 +111,12 @@ def list_next_departure(datatype):
 
 @app.route('/list/stop/subscribe', methods=['GET'])
 def subscribe():
-    print (request.args.get('id'))
-    print (request.args.get('username'))
-    print (request.args.get('stops'))
-    return jsonify(id=1)
+    id = request.args.get['id']
+    hash = request.args.get['hash']
+    if 1 == user.auth_cookie(id, hash):
+        return
+    print (request.args.getlist('stops'))
+    return jsonify(error="Bad request.")
 
 
 """
@@ -125,10 +133,12 @@ def subscribe():
 
 @app.route('/list/stop/unsubscribe', methods=['GET'])
 def un_subscribe():
-    print (request.args.get('id'))
-    print (request.args.get('username'))
+    id = request.args.get['id']
+    hash = request.args.get['hash']
+    if 1 == user.auth_cookie(id, hash):
+        return
     print (request.args.get('stops'))
-    return jsonify(id=1)
+    return jsonify(error="Bad request.")
 
 
 """
@@ -149,11 +159,13 @@ def un_subscribe():
 @app.route('/list/stop/around500Meter', methods=['GET'], defaults={'datatype': None})
 @app.route('/list/stop/around500Meter<path:datatype>', methods=['GET'])
 def get_stop_localisation(datatype):
-    print (request.args.get('id'))
-    print (request.args.get('username'))
+    id = request.args.get['id']
+    hash = request.args.get['hash']
+    if 1 == user.auth_cookie(id, hash):
+        return
     print (request.args.get('latitude'))
     print (request.args.get('longitude'))
-    return jsonify(id=1)
+    return jsonify(error="Bad request.")
 
 
 """
@@ -173,11 +185,13 @@ def get_stop_localisation(datatype):
 @app.route('/list/stop/subscribed/nextDeparture/handicapped', methods=['GET'], defaults={'datatype': None})
 @app.route('/list/stop/subscribed/nextDeparture/handicapped<path:datatype>', methods=['GET'])
 def list_next_departure_for_handicaped(datatype):
-    print (request.args.get('id'))
-    print (request.args.get('username'))
+    id = request.args.get['id']
+    hash = request.args.get['hash']
+    if 1 == user.auth_cookie(id, hash):
+        return
     print (request.args.get('stops'))
     print (request.args.get('stopInfo'))
-    return jsonify(id=1)
+    return jsonify(error="Bad request.")
 
 
 """------------------------------------------------------------------------------------------------------------------"""
@@ -192,9 +206,9 @@ def __sign_in__():
     passwd = request.json['passwd']
     username = request.json['username']
     if not None == passwd and not None == username:
-        cookie = sign_in(username, passwd)
+        cookie = user.sign_in(username, passwd)
         if 2 == len(cookie):
-            return jsonify(cookie_hepia_tpg=sign_in(username, passwd))
+            return jsonify(cookie_hepia_tpg=cookie)
         return  jsonify(error=cookie)
     return jsonify(error="Bad request.")
 
@@ -204,7 +218,7 @@ def __del_user__():
     id = request.json['id']
     hash = request.json['hash']
     if not None == id and not None == hash:
-        return jsonify(error=del_user(username, passwd))
+        return jsonify(error=user.del_user(id, hash))
     return jsonify(error="Bad request.")
 
 
@@ -213,7 +227,7 @@ def __add_user__(passwd, user):
     passwd = request.json['passwd']
     username = request.json['username']
     if not None == passwd and not None == username:
-        return jsonify(error=add_user(username, passwd))
+        return jsonify(error=user.add_user(username, passwd))
     return jsonify(error="Bad request.")
 
 
@@ -222,7 +236,7 @@ def __sign_out__(uid, user):
     id = request.json['id']
     hash = request.json['hash']
     if not None == id and not None == hash:
-        return jsonify(error=sign_out(username, passwd))
+        return jsonify(error=user.sign_out(id, hash))
     return jsonify(error="Bad request.")
 
 
