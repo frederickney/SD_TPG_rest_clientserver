@@ -1,4 +1,5 @@
 from db import mysqlressourses as mysql
+import hashlib
 
 
 """
@@ -11,7 +12,7 @@ from db import mysqlressourses as mysql
 """
 
 
-def SetUser(username, passwd):
+def set_user(username, passwd):
     query = "Insert into users (id, username, password) values ( NULL, '%s', SHA2('%s', 512));"
     result = mysql.mysql_query(query % username % passwd, "insert")
     if 0 == result:
@@ -30,15 +31,21 @@ def SetUser(username, passwd):
 """
 
 
-def SignIn(username, passwd):
-    query = "Select id form user where user = '%s' and password = SHA2('%s', 512);"
+def sign_in(username, passwd):
+    query = "Select * from user where username = '%s' and password = SHA2('%s', 512);"
     results = mysql.mysql_query(query % username % passwd)
     if 1 == len(results):
+        """ /* setting up cookie for user registered */ """
         for row in results:
-            result = row["id"]
+            result = {"id", "hash"}
+            result["id"] = row["id"]
+            result["hash"] = hashlib.sha512(row["id"] + row["user"] + row["password"]).hexdigest()
+            query = "update user set logged = 1 where id = %i;"
+            mysql.mysql_query(query % id)
+            return result
     elif 0 == len(results):
         result = "Unable to sign in, please register before login or verify your username and password"
-    return result
+        return result
 
 
 """
@@ -51,8 +58,20 @@ def SignIn(username, passwd):
 """
 
 
-def DelUser(UserId):
-    return
+def del_user(id, hash):
+    if 1 == auth_cookie(id, hash):
+        query = "delete from subscriptions where id = %i"
+        if 0 <= mysql.mysql_query(query % id, "delete"):
+            query = "delete from subbscriptions where id = %i"
+            if 0 < mysql.mysql_query(query % id, "delete"):
+                return "User successfully deleted"
+            else:
+                return "unable to delete user"
+        else:
+            return "unable to delete subscriptions"
+    else:
+        result = "sorry wrong session id."
+        return result
 
 
 """
@@ -65,6 +84,26 @@ def DelUser(UserId):
 """
 
 
-def SignIn(UserId):
-    return
+def sign_out(id, hash):
+    if 1 == auth_cookie(id, hashlib):
+        query = "update user set logged = 0 where id = %i;"
+        mysql.mysql_query(query % id)
+        return 1
+    else:
+        return 0
 
+
+def auth_cookie(id, hash):
+    query = "Select * from user where id = %i;"
+    results = mysql.mysql_query(query % id)
+    if 1 == len(results):
+        """ /* authentify user */ """
+        for row in results:
+            hash_verify = hashlib.sha512(row["id"] + row["user"] + row["password"]).hexdigest()
+            if hash == hash_verify and row["logged"] == 1:
+                return 1
+            else:
+                return 0
+    elif 0 == len(results):
+        return 0
+    return
