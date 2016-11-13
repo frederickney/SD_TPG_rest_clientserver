@@ -1,6 +1,6 @@
 __author__ = 'Frederick NEY & Stephane Overlen'
 
-import sources
+import Rest.TPG.sources as sources
 import requests
 import itertools
 import xmltodict, json

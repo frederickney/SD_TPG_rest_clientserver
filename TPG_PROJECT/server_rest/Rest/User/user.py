@@ -1,5 +1,5 @@
 __author__ = 'Frederick NEY & Stephane Overlen'
-import db.mysqlressourses as mysql
+import Rest.User.db.mysqlressourses as mysql
 import hashlib
 
 
@@ -97,6 +97,8 @@ def sign_out(id, hash):
 def auth_cookie(id, hash):
     query = "Select * from user where id = %i;"
     results = mysql.mysql_query(query % id)
+    if 0 > results:
+        return 0
     if 1 == len(results):
         """ /* authentify user */ """
         for row in results:

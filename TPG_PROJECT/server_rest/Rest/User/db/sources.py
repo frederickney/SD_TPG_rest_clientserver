@@ -1,5 +1,5 @@
 __author__ = 'Frederick NEY & Stephane Overlen'
-MYSQL_USER = "root"
-MYSQL_PASS = ""
-MYSQL_HOST = ""
-MYSQL_DB = "TPG"
+hostname = 'localhost'
+username = 'root'
+password = 'Mh867KrV791ZwR'
+database = 'TPG'

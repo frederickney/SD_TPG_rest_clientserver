@@ -42,8 +42,11 @@ def parse_datatype(datatype):
 @app.route('/list/stop/available', defaults={'datatype': None}, methods=['GET'])
 @app.route('/list/stop/available<path:datatype>', methods=['GET'])
 def list_available_stop(datatype):
-    id = request.args.get['id']
-    hash = request.args.get['hash']
+    id = request.args.get('id')
+    id = int(id)
+    print(id)
+    hash = request.args.get('hash')
+    print(hash)
     if 1 == user.auth_cookie(id, hash):
         return jsonify(stop_available=client.get_stops())
     return jsonify(error="Bad request.")
@@ -65,8 +68,9 @@ def list_available_stop(datatype):
 @app.route('/list/stop/subscribed', methods=['GET'], defaults={'datatype': None})
 @app.route('/list/stop/subscribed<path:datatype>', methods=['GET'])
 def list_stop_subscribed(datatype):
-    id = request.args.get['id']
-    hash = request.args.get['hash']
+    id = request.args.get('id')
+    id = int(id)
+    hash = request.args.get('hash')
     if 1 == user.auth_cookie(id, hash):
         query = "Select * from subscriptions where id = %i"
         mysql.mysql_query()
@@ -88,8 +92,9 @@ def list_stop_subscribed(datatype):
 @app.route('/list/stop/subscribed/nextDeparture', methods=['GET'], defaults={'datatype': None})
 @app.route('/list/stop/subscribed/nextDeparture<path:datatype>', methods=['GET'])
 def list_next_departure(datatype):
-    id = request.args.get['id']
-    hash = request.args.get['hash']
+    id = request.args.get('id')
+    id = int(id)
+    hash = request.args.get('hash')
     if 1 == user.auth_cookie(id, hash):
         return
     print (request.args.get('stops'))
@@ -111,8 +116,9 @@ def list_next_departure(datatype):
 
 @app.route('/list/stop/subscribe', methods=['GET'])
 def subscribe():
-    id = request.args.get['id']
-    hash = request.args.get['hash']
+    id = request.args.get('id')
+    id = int(id)
+    hash = request.args.get('hash')
     if 1 == user.auth_cookie(id, hash):
         return
     print (request.args.getlist('stops'))
@@ -133,8 +139,9 @@ def subscribe():
 
 @app.route('/list/stop/unsubscribe', methods=['GET'])
 def un_subscribe():
-    id = request.args.get['id']
-    hash = request.args.get['hash']
+    id = request.args.get('id')
+    id = int(id)
+    hash = request.args.get('hash')
     if 1 == user.auth_cookie(id, hash):
         return
     print (request.args.get('stops'))
@@ -159,8 +166,9 @@ def un_subscribe():
 @app.route('/list/stop/around500Meter', methods=['GET'], defaults={'datatype': None})
 @app.route('/list/stop/around500Meter<path:datatype>', methods=['GET'])
 def get_stop_localisation(datatype):
-    id = request.args.get['id']
-    hash = request.args.get['hash']
+    id = request.args.get('id')
+    id = int(id)
+    hash = request.args.get('hash')
     if 1 == user.auth_cookie(id, hash):
         return
     print (request.args.get('latitude'))
@@ -185,8 +193,9 @@ def get_stop_localisation(datatype):
 @app.route('/list/stop/subscribed/nextDeparture/handicapped', methods=['GET'], defaults={'datatype': None})
 @app.route('/list/stop/subscribed/nextDeparture/handicapped<path:datatype>', methods=['GET'])
 def list_next_departure_for_handicaped(datatype):
-    id = request.args.get['id']
-    hash = request.args.get['hash']
+    id = request.args.get('id')
+    id = int(id)
+    hash = request.args.get('hash')
     if 1 == user.auth_cookie(id, hash):
         return
     print (request.args.get('stops'))
