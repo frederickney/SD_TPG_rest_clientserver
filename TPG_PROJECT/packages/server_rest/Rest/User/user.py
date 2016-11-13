@@ -88,9 +88,9 @@ def sign_out(id, hash):
     if 1 == auth_cookie(id, hashlib):
         query = "update user set logged = 0 where id = %i;"
         mysql.mysql_query(query % id)
-        return 1
+        return "logged out."
     else:
-        return 0
+        return "unable to log out."
 
 
 def auth_cookie(id, hash):
