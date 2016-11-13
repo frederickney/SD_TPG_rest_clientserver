@@ -106,30 +106,42 @@ def list_next_departure_for_handicaped(datatype):
 
 @app.route('/usr/signIn', methods=['POST'])
 def login():
-    print (request.json['passwd'])
-    print (request.json['username'])
-    return jsonify(id=1)
+    passwd = request.json['passwd']
+    username = request.json['username']
+    if not None == passwd and not None == username:
+        cookie = sign_in(username, passwd)
+        if 2 == len(cookie):
+            return jsonify(cookie_hepia_tpg=sign_in(username, passwd))
+        return  jsonify(error=cookie)
+    return jsonify(error="Bad request.")
 
 
 @app.route('/usr/del', methods=['POST'])
-def del_user():
-    print (request.json['id'])
-    print (request.json['username'])
-    return jsonify(id=1)
+def del__user():
+    id = request.json['id']
+    hash = request.json['hash']
+    if not None == id and not None == hash:
+        return jsonify(error=del_user(username, passwd))
+    return jsonify(error="Bad request.")
 
 
 @app.route('/usr/add', methods=['POST'])
-def add_user(passwd, user):
-    print (request.json['passwd'])
-    print (request.json['username'])
-    return jsonify(id=1)
+def add__user(passwd, user):
+    passwd = request.json['passwd']
+    username = request.json['username']
+    if not None == passwd and not None == username:
+        return jsonify(error=set_user(username, passwd))
+    return jsonify(error="Bad request.")
 
 
 @app.route('/usr/signOut', methods=['POST'])
-def sign_out(uid, user):
-    print (request.json['id'])
-    print (request.json['username'])
-    return jsonify(id=1)
+def sign__out(uid, user):
+    id = request.json['id']
+    hash = request.json['hash']
+    if not None == id and not None == hash:
+        return jsonify(error=sign_out(username, passwd))
+    return jsonify(error="Bad request.")
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Simple REST FTP server')

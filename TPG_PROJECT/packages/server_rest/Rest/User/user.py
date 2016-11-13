@@ -16,7 +16,7 @@ def set_user(username, passwd):
     query = "Insert into users (id, username, password) values ( NULL, '%s', SHA2('%s', 512));"
     result = mysql.mysql_query(query % username % passwd, "insert")
     if 0 == result:
-        return "To register your user."
+        return "Unable to register your user."
     elif 1 == result:
         return "User registered"
 
@@ -85,7 +85,7 @@ def del_user(id, hash):
 
 
 def sign_out(id, hash):
-    if 1 == auth_cookie(id, hashlib):
+    if 1 == auth_cookie(id, hash):
         query = "update user set logged = 0 where id = %i;"
         mysql.mysql_query(query % id)
         return "logged out."
