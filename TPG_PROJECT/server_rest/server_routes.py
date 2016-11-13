@@ -83,14 +83,17 @@ def list_stop_subscribed(datatype):
     return jsonify(error="Bad request.")
 
 """
-@api {get} /list/stop/subscribed/nextDeparture?id=&hash=&stopName list_next_departure()
+@api {get} /list/stop/subscribed/nextDeparture?id=&hash=&stopName&code= list_next_departure()
 
 @apiName list_next_departure
 @apiGroup TPG
 
 @apiParam   {id = integer} id of the user
 @apiParam   {hash = string} hash code of the cookie
-@apiParam   {list of string}  list of departure
+@apiParam   {stopName = list of string}  list of stop
+@apiParam   {code = string} optional should be stopName or stopCode
+
+@apiSuccess {list of string} List of departure
 """
 
 
@@ -119,7 +122,10 @@ def list_next_departure(datatype):
 
 @apiParam   {id = integer} id of the user
 @apiParam   {hash = string} hash code of the cookie
-@apiParam   {stopName = list of string}  list of stop name
+@apiParam   {stopName = list of string}  list of stop
+@apiParam   {code = string} optional should be stopName or stopCode
+
+@apiSuccess {string} error code
 """
 
 
@@ -127,7 +133,7 @@ def list_next_departure(datatype):
 def subscribe():
     id = request.args.get('id')
     hash = request.args.get('hash')
-    stop_name = request.args.getlist('stopName')
+    stop_name = request.args.getlist('stopCode')
     request_code = request.args.get('code')
     if None == request_code:
         request_code = "stopName"
@@ -135,7 +141,10 @@ def subscribe():
         return jsonify(error="Bad request.")
     id = int(id)
     if 1 == user.auth_cookie(id, hash):
-        return
+        query = "insert into subscriptions (stop_id, user_id) values ('%s', %i);"
+        for stop in stop_name:
+            mysql.mysql_query(query % stop % id, "insert")
+        return jsonify(error="Success.")
     return jsonify(error="Bad request.")
 
 
@@ -148,6 +157,10 @@ def subscribe():
 @apiParam   {stopName = list of string}  list of stop name
 @apiParam   {id = integer} id of the user
 @apiParam   {hash = string} hash code of the cookie
+@apiParam   {stopName = list of string}  list of stop
+@apiParam   {code = string} optional should be stopName or stopCode
+
+@apiSuccess {string} error code
 """
 
 
@@ -155,15 +168,18 @@ def subscribe():
 def un_subscribe():
     id = request.args.get('id')
     hash = request.args.get('hash')
-    if None == hash and None == id:
-        stop_name = request.args.getlist('stopName')
     request_code = request.args.get('code')
+    stop_name = request.args.getlist('stopCode')
     if None == request_code:
-        request_code = "stopName"
+        stop_name = request.args.getlist('stopCode')
+    if None == hash and None == id:
         return jsonify(error="Bad request.")
     id = int(id)
     if 1 == user.auth_cookie(id, hash):
-        return
+        query = "delete from subscriptions where stop_id = %s;"
+        for stop in stop_name:
+            mysql.mysql_query(query % stop, "delete")
+        return jsonify(error="Success.")
     return jsonify(error="Bad request.")
 
 
@@ -205,9 +221,10 @@ def get_stop_localisation(datatype):
 
 @apiParam   {id = integer} id of the user
 @apiParam   {hash = string} hash code of the cookie
-@apiParam   {stopName = list of string}  list of stop name
+@apiParam   {stopName = list of string}  list of stop
+@apiParam   {code = string} optional should be stopName or stopCode
 
-@apiSuccess {String = HandiBus} list of bus with handicapped capabilities
+@apiSuccess {list of string} List of departure with handicapped capabilities
 """
 
 
