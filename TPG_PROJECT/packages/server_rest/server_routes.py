@@ -6,7 +6,7 @@ import argparse
 from flask import Flask, request, jsonify
 
 from Rest.User.user import *
-from Rest.tpg import *
+from Rest.TPG.client import *
 
 app = Flask(__name__)
 main_directory = None
@@ -25,30 +25,60 @@ def parse_datatype(datatype):
 """------------------------------------------------------------------------------------------------------------------"""
 
 
+"""
+@api {get} /stop/available?id=&hash= list_available_stop()
+
+@apiName list_available_stop
+@apiGroup TPG
+
+@apiParam   {id = integer} id of the user
+@apiParam   {hash = string} hash code of the cookie
+
+@apiSuccess {list of string} list of available stop
+"""
+
+
 @app.route('/list/stop/available', defaults={'datatype': None}, methods=['GET'])
 @app.route('/list/stop/available<path:datatype>', methods=['GET'])
 def list_available_stop(datatype):
-    print (request.args.get('id'))
-    print (request.args.get('username'))
-    return jsonify(id=1)
+    id = request.json['id']
+    hash = request.json['hash']
+    if 1 == auth_cookie(id, hash):
+        return jsonify(stop_available=get_stops())
+    return jsonify(error="Bad request.")
 
 
-@app.route('/list/stop/subscribed', defaults={'datatype': None}, methods=['GET'])
-@app.route('/list/stop/subscribed<path:datatype>?', methods=['GET'])
-def get_subscribed(datatype):
-    print (request.args.get('id'))
-    print (request.args.get('username'))
-    print (request.args.get('stops'))
-    print (request.args.get('stopInfo'))
-    return jsonify(id=1)
+"""
+@api {get} /list/stop/subscribed?id=&hash= list_stop_subscribed()
+
+@apiName list_stop_subscribed
+@apiGroup TPG
+
+@apiParam   {id = integer} id of the user
+@apiParam   {hash = string} hash code of the cookie
+
+@apiSuccess {list of string} list of stop
+"""
 
 
 @app.route('/list/stop/subscribed', methods=['GET'], defaults={'datatype': None})
 @app.route('/list/stop/subscribed<path:datatype>', methods=['GET'])
-def list_stop(datatype):
+def list_stop_subscribed(datatype):
     print (request.args.get('id'))
     print (request.args.get('username'))
     return jsonify(id=1)
+
+
+"""
+@api {get} /list/stop/subscribed/nextDeparture?id=&hash=&stopName list_next_departure()
+
+@apiName list_next_departure
+@apiGroup TPG
+
+@apiParam   {id = integer} id of the user
+@apiParam   {hash = string} hash code of the cookie
+@apiParam   {list of string}  list of departure
+"""
 
 
 @app.route('/list/stop/subscribed/nextDeparture', methods=['GET'], defaults={'datatype': None})
@@ -61,6 +91,18 @@ def list_next_departure(datatype):
     return jsonify(id=1)
 
 
+"""
+@api {get} /list/stop/subscribe?id=&hash=&stopName= subscribe()
+
+@apiName subscribe
+@apiGroup TPG
+
+@apiParam   {id = integer} id of the user
+@apiParam   {hash = string} hash code of the cookie
+@apiParam   {stopName = list of string}  list of stop name
+"""
+
+
 @app.route('/list/stop/subscribe', methods=['GET'])
 def subscribe():
     print (request.args.get('id'))
@@ -69,12 +111,39 @@ def subscribe():
     return jsonify(id=1)
 
 
+"""
+@api {get} /list/stop/unsubscribe?stopName=&id=&hash= un_subscribe()
+
+@apiName un_subscribe
+@apiGroup TPG
+
+@apiParam   {stopName = list of string}  list of stop name
+@apiParam   {id = integer} id of the user
+@apiParam   {hash = string} hash code of the cookie
+"""
+
+
 @app.route('/list/stop/unsubscribe', methods=['GET'])
 def un_subscribe():
     print (request.args.get('id'))
     print (request.args.get('username'))
     print (request.args.get('stops'))
     return jsonify(id=1)
+
+
+"""
+@api {get} /list/stop/around500Meter?id=&hash=&latitude=&longitude= get_stop_localisation()
+
+@apiName get_stop_localisation
+@apiGroup TPG
+
+@apiParam   {id = integer} id of the user
+@apiParam   {hash = string} hash code of the cookie
+@apiParam   {latitude = list of integer} list of latitude
+@apiParam   {longitude = list of integer} list of longitude
+
+@apiSuccess {list of string} list of stops around 500 meters for a location
+"""
 
 
 @app.route('/list/stop/around500Meter', methods=['GET'], defaults={'datatype': None})
@@ -87,8 +156,22 @@ def get_stop_localisation(datatype):
     return jsonify(id=1)
 
 
-@app.route('/list/stop/subscribed/nextDeparture/handicaped', methods=['GET'], defaults={'datatype': None})
-@app.route('/list/stop/subscribed/nextDeparture/handicaped<path:datatype>', methods=['GET'])
+"""
+@api {get} /list/stop/subscribed/nextDeparture/handicaped?id=&hash=&stopName= list_next_departure_for_handicaped()
+
+@apiName list_next_departure_for_handicaped
+@apiGroup TPG
+
+@apiParam   {id = integer} id of the user
+@apiParam   {hash = string} hash code of the cookie
+@apiParam   {stopName = list of string}  list of stop name
+
+@apiSuccess {String = HandiBus} list of bus with handicapped capabilities
+"""
+
+
+@app.route('/list/stop/subscribed/nextDeparture/handicapped', methods=['GET'], defaults={'datatype': None})
+@app.route('/list/stop/subscribed/nextDeparture/handicapped<path:datatype>', methods=['GET'])
 def list_next_departure_for_handicaped(datatype):
     print (request.args.get('id'))
     print (request.args.get('username'))
@@ -105,7 +188,7 @@ def list_next_departure_for_handicaped(datatype):
 
 
 @app.route('/usr/signIn', methods=['POST'])
-def login():
+def __sign_in__():
     passwd = request.json['passwd']
     username = request.json['username']
     if not None == passwd and not None == username:
@@ -117,7 +200,7 @@ def login():
 
 
 @app.route('/usr/del', methods=['POST'])
-def del__user():
+def __del_user__():
     id = request.json['id']
     hash = request.json['hash']
     if not None == id and not None == hash:
@@ -126,16 +209,16 @@ def del__user():
 
 
 @app.route('/usr/add', methods=['POST'])
-def add__user(passwd, user):
+def __add_user__(passwd, user):
     passwd = request.json['passwd']
     username = request.json['username']
     if not None == passwd and not None == username:
-        return jsonify(error=set_user(username, passwd))
+        return jsonify(error=add_user(username, passwd))
     return jsonify(error="Bad request.")
 
 
 @app.route('/usr/signOut', methods=['POST'])
-def sign__out(uid, user):
+def __sign_out__(uid, user):
     id = request.json['id']
     hash = request.json['hash']
     if not None == id and not None == hash:

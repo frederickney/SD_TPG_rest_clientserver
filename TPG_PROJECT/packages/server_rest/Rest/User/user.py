@@ -12,7 +12,7 @@ import hashlib
 """
 
 
-def set_user(username, passwd):
+def add_user(username, passwd):
     query = "Insert into users (id, username, password) values ( NULL, '%s', SHA2('%s', 512));"
     result = mysql.mysql_query(query % username % passwd, "insert")
     if 0 == result:
