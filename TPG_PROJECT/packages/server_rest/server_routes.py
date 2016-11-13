@@ -3,6 +3,8 @@ __author__ = 'admin_master'
 import re
 import argparse
 from flask import Flask, request, jsonify
+from Rest.User.user import *
+from Rest.tpg import *
 
 app = Flask(__name__)
 main_directory = None
