@@ -1,9 +1,9 @@
 {
-  "name": "apidoc-example",
-  "version": "0.3.0",
-  "description": "apiDoc example project",
-  "title": "Custom apiDoc browser title",
-  "url" : "https://api.github.com/v1",
+  "name": "TPG rest server - client",
+  "version": "1.0.1",
+  "description": "TPG rest server - client writen in python by Stephane OVERLEN and Frederick NEY",
+  "title": "HEPIA",
+  "url" : "http://domainName",
   "header": {
     "title": "TPG rest project"
   },

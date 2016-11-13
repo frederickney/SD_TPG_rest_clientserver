@@ -1,6 +1,6 @@
 __author__ = 'Frederick NEY & Stephane Overlen'
 
-import Rest.TPG.sources
+import sources
 import requests
 import itertools
 import xmltodict, json
@@ -16,8 +16,8 @@ import xmltodict, json
 # request example
 # http://prod.ivtr-od.tpg.ch/v1/GetDisruptions?key=hZELIENF7EHRoHL2rY7i
 def get_disruptions(datatype = None):
-    url = "http://" + TPG_SERVER + "/" + SERVER_VERSION + "/GetDisruptions"
-    param = {KEY: AUTH_KEY}
+    url = "http://" + sources.TPG_SERVER + "/" + sources.SERVER_VERSION + "/GetDisruptions"
+    param = {sources.KEY: sources.AUTH_KEY}
     if not None == datatype:
         url = url + "." + datatype
     if "json" == datatype:
@@ -50,13 +50,13 @@ def get_disruptions(datatype = None):
 # using line code
 # http://prod.ivtr-od.tpg.ch/v1/GetStops?key=hZELIENF7EHRoHL2rY7i&?lineCode=12
 def get_stops(request_code = None, request_data = None, datatype = None):
-    url = "http://" + TPG_SERVER + "/" + SERVER_VERSION + "/GetStops"
+    url = "http://" + sources.TPG_SERVER + "/" + sources.SERVER_VERSION + "/GetStops"
     result = []
     if not None == datatype:
         url = url + "." + datatype
     if not None == request_code and not None == request_data:
         for data in request_data:
-            param = {KEY: AUTH_KEY, request_code: data}
+            param = {sources.KEY: sources.AUTH_KEY, request_code: data}
             if "json" == datatype:
                 content = requests.get(url, param).json()["stops"]
                 result .append(content)
@@ -68,7 +68,7 @@ def get_stops(request_code = None, request_data = None, datatype = None):
                 content = requests.get(url, param).json()["stops"]
                 result .append(content)
     else:
-        param = {KEY: AUTH_KEY}
+        param = {sources.KEY: sources.AUTH_KEY}
         if "json" == datatype:
                 content = requests.get(url, param).json()["stops"]
                 result .append(content)
@@ -95,12 +95,12 @@ def get_stops(request_code = None, request_data = None, datatype = None):
 # using latitude and longitude
 # http://prod.ivtr-od.tpg.ch/v1/GetStops?key=hZELIENF7EHRoHL2rY7i&latitude=46.218176&longitude=6.146445
 def get_localisation(latitudes, longitudes, datatype = None):
-    url = "http://" + TPG_SERVER + "/" + SERVER_VERSION + "/GetStops"
+    url = "http://" + sources.TPG_SERVER + "/" + sources.SERVER_VERSION + "/GetStops"
     result = []
     if not None == datatype:
         url = url + "." + datatype
     for latitude, longitude in itertools.product(latitudes, longitudes):
-        param = {KEY: AUTH_KEY, "longitude": longitude, "latitude": latitude}
+        param = {sources.KEY: sources.AUTH_KEY, "longitude": longitude, "latitude": latitude}
         if "json" == datatype:
             content = requests.get(url, param).json()["stops"]
             result.append(content)
@@ -128,12 +128,12 @@ def get_localisation(latitudes, longitudes, datatype = None):
 # using stop name
 # http://prod.ivtr-od.tpg.ch/v1/GetPhysicalStops?key=hZELIENF7EHRoHL2rY7i&stopName=gare cornavin
 def get_physical_stops(request_code, request_data, datatype = None,):
-    url = "http://" + TPG_SERVER + "/" + SERVER_VERSION + "/GetPhysicalStops"
+    url = "http://" + sources.TPG_SERVER + "/" + sources.SERVER_VERSION + "/GetPhysicalStops"
     result = []
     if not None == datatype:
         url = url + "." + datatype
     for data in request_data:
-        param = {KEY: AUTH_KEY, request_code: data}
+        param = {sources.KEY: sources.AUTH_KEY, request_code: data}
         if "json" == datatype:
             content = requests.get(url, param).json()["stops"]
             result.append(content)
@@ -166,12 +166,12 @@ def get_physical_stops(request_code, request_data, datatype = None,):
 # using stop code
 # http://prod.ivtr-od.tpg.ch/v1/GetNextDepartures?key=hZELIENF7EHRoHL2rY7i&stopCode=ACCM
 def get_next_departure(request_code, request_data, datatype = None):
-    url = "http://" + TPG_SERVER + "/" + SERVER_VERSION + "/GetNextDepartures"
+    url = "http://" + sources.TPG_SERVER + "/" + sources.SERVER_VERSION + "/GetNextDepartures"
     result = []
     if not None == datatype:
         url = url + "." + datatype
     for data in request_data:
-        param = {KEY: AUTH_KEY, request_code: data}
+        param = {sources.KEY: sources.AUTH_KEY, request_code: data}
         if "json" == datatype:
             content = requests.get(url, param).json()
             del content['timestamp']

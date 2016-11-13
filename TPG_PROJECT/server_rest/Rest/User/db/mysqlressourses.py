@@ -1,7 +1,7 @@
 __author__ = 'Frederick NEY & Stephane Overlen'
 
 import pymysql as mysql
-import Rest.User.db.sources
+import sources
 
 
 """
@@ -11,7 +11,7 @@ import Rest.User.db.sources
 
 
 def mysql_connection():
-    return mysql.connect(MYSQL_USER, MYSQL_PASS, MYSQL_HOST, MYSQL_DB)
+    return mysql.connect(sources.MYSQL_USER, sources.MYSQL_PASS, sources.MYSQL_HOST, sources.MYSQL_DB)
 
 
 """
