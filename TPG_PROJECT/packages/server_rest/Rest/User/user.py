@@ -1,3 +1,5 @@
+import
+
 """
 @api {post} /usr/add/:userName/:password SetUser()
 
@@ -6,8 +8,11 @@
 
 @apiParam {String= Username, Password} user's credentials
 """
+
+
 def SetUser(self, Username, Password):
 	return
+
 
 """
 @api {post} /usr/signin/:userName/password SignIn()
@@ -17,8 +22,11 @@ def SetUser(self, Username, Password):
 
 @apiParam {String= Username, Password} user's credentials
 """
+
+
 def SignIn(self, Username, Password):
 	return
+
 
 """
 @api {post} /usr/del/:userId DelUser()
@@ -28,8 +36,11 @@ def SignIn(self, Username, Password):
 
 @apiParam {Integer= UserId} UserId user's id
 """
+
+
 def DelUser(self, UserId):
 	return
+
 
 """
 @api {post} /usr/signout/:userId SignOut()
@@ -39,6 +50,8 @@ def DelUser(self, UserId):
 
 @apiParam {Integer= UserId} UserId user's id
 """
+
+
 def SignIn(self, UserId):
 	return
 
