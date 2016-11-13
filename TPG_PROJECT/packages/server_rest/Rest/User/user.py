@@ -1,4 +1,4 @@
-from db import mysqlressourses as mysql
+import Rest.User.db.mysqlressourses as mysql
 import hashlib
 
 

@@ -1,7 +1,7 @@
 __author__ = 'Frederick NEY & Stephane Overlen'
 
 import pymysql as mysql
-from sources import *
+import Rest.User.db.sources
 
 
 """

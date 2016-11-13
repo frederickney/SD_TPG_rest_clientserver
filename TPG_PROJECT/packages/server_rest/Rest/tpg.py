@@ -1,7 +1,7 @@
 __author__ = 'Frederick NEY & Stephane Overlen'
 
-from User.user import *
-from TPG.client import *
+import Rest.User.user
+import Rest.TPG.client
 
 
 """

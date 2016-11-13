@@ -1,6 +1,6 @@
 __author__ = 'Frederick NEY & Stephane Overlen'
 
-from sources import *
+import Rest.TPG.sources
 import requests
 import xml.etree.ElementTree as xmlparser
 import itertools

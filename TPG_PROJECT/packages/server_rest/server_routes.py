@@ -2,7 +2,9 @@ __author__ = 'admin_master'
 
 import re
 import argparse
+
 from flask import Flask, request, jsonify
+
 from Rest.User.user import *
 from Rest.tpg import *
 
@@ -26,72 +28,72 @@ def parse_datatype(datatype):
 @app.route('/list/stop/available', defaults={'datatype': None}, methods=['GET'])
 @app.route('/list/stop/available<path:datatype>', methods=['GET'])
 def list_available_stop(datatype):
-    print request.args.get('id')
-    print request.args.get('username')
+    print (request.args.get('id'))
+    print (request.args.get('username'))
     return jsonify(id=1)
 
 
 @app.route('/list/stop/subscribed', defaults={'datatype': None}, methods=['GET'])
 @app.route('/list/stop/subscribed?<path:datatype>', methods=['GET'])
 def get_subscribed(datatype):
-    print request.args.get('id')
-    print request.args.get('username')
-    print request.args.get('stops')
-    print request.args.get('stopInfo')
+    print (request.args.get('id'))
+    print (request.args.get('username'))
+    print (request.args.get('stops'))
+    print (request.args.get('stopInfo'))
     return jsonify(id=1)
 
 
 @app.route('/list/stop/subscribed', methods=['GET'], defaults={'datatype': None})
 @app.route('/list/stop/subscribed<path:datatype>', methods=['GET'])
 def list_stop(datatype):
-    print request.args.get('id')
-    print request.args.get('username')
+    print (request.args.get('id'))
+    print (request.args.get('username'))
     return jsonify(id=1)
 
 
 @app.route('/list/stop/subscribed/nextDeparture', methods=['GET'], defaults={'datatype': None})
 @app.route('/list/stop/subscribed/nextDeparture<path:datatype>', methods=['GET'])
 def list_next_departure(datatype):
-    print request.args.get('id')
-    print request.args.get('username')
-    print request.args.get('stops')
-    print request.args.get('stopInfo')
+    print (request.args.get('id'))
+    print (request.args.get('username'))
+    print (request.args.get('stops'))
+    print (request.args.get('stopInfo'))
     return jsonify(id=1)
 
 
 @app.route('/list/stop/subscribe', methods=['GET'])
 def subscribe():
-    print request.args.get('id')
-    print request.args.get('username')
-    print request.args.get('stops')
+    print (request.args.get('id'))
+    print (request.args.get('username'))
+    print (request.args.get('stops'))
     return jsonify(id=1)
 
 
 @app.route('/list/stop/unsubscribe', methods=['GET'])
 def un_subscribe():
-    print request.args.get('id')
-    print request.args.get('username')
-    print request.args.get('stops')
+    print (request.args.get('id'))
+    print (request.args.get('username'))
+    print (request.args.get('stops'))
     return jsonify(id=1)
 
 
 @app.route('/list/stop/around500Meter', methods=['GET'], defaults={'datatype': None})
 @app.route('/list/stop/around500Meter<path:datatype>', methods=['GET'])
 def get_stop_localisation(datatype):
-    print request.args.get('id')
-    print request.args.get('username')
-    print request.args.get('latitude')
-    print request.args.get('longitude')
+    print (request.args.get('id'))
+    print (request.args.get('username'))
+    print (request.args.get('latitude'))
+    print (request.args.get('longitude'))
     return jsonify(id=1)
 
 
 @app.route('/list/stop/subscribed/nextDeparture/handicaped', methods=['GET'], defaults={'datatype': None})
 @app.route('/list/stop/subscribed/nextDeparture/handicaped<path:datatype>', methods=['GET'])
 def list_next_departure_for_handicaped(datatype):
-    print request.args.get('id')
-    print request.args.get('username')
-    print request.args.get('stops')
-    print request.args.get('stopInfo')
+    print (request.args.get('id'))
+    print (request.args.get('username'))
+    print (request.args.get('stops'))
+    print (request.args.get('stopInfo'))
     return jsonify(id=1)
 
 
@@ -104,29 +106,29 @@ def list_next_departure_for_handicaped(datatype):
 
 @app.route('/usr/signIn', methods=['POST'])
 def login():
-    print request.json['passwd']
-    print request.json['username']
+    print (request.json['passwd'])
+    print (request.json['username'])
     return jsonify(id=1)
 
 
 @app.route('/usr/del', methods=['POST'])
 def del_user():
-    print request.json['id']
-    print request.json['username']
+    print (request.json['id'])
+    print (request.json['username'])
     return jsonify(id=1)
 
 
 @app.route('/usr/add', methods=['POST'])
 def add_user(passwd, user):
-    print request.json['passwd']
-    print request.json['username']
+    print (request.json['passwd'])
+    print (request.json['username'])
     return jsonify(id=1)
 
 
 @app.route('/usr/signOut', methods=['POST'])
 def sign_out(uid, user):
-    print request.json['id']
-    print request.json['username']
+    print (request.json['id'])
+    print (request.json['username'])
     return jsonify(id=1)
 
 if __name__ == '__main__':
