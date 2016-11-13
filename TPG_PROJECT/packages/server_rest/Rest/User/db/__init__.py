@@ -1,1 +1,1 @@
-__author__ = 'admin_master'
+__author__ = 'Frederick NEY & Stephane Overlen'

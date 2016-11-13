@@ -1,4 +1,5 @@
-import
+from db import mysqlressourses as mysql
+
 
 """
 @api {post} /usr/add/:userName/:password SetUser()
@@ -10,8 +11,13 @@ import
 """
 
 
-def SetUser(self, Username, Password):
-	return
+def SetUser(username, passwd):
+    query = "Insert into users (id, username, password) values ( NULL, '%s', SHA2('%s', 512));"
+    result = mysql.mysql_query(query % username % passwd, "insert")
+    if 0 == result:
+        return "To register your user."
+    elif 1 == result:
+        return "User registered"
 
 
 """
@@ -24,8 +30,15 @@ def SetUser(self, Username, Password):
 """
 
 
-def SignIn(self, Username, Password):
-	return
+def SignIn(username, passwd):
+    query = "Select id form user where user = '%s' and password = SHA2('%s', 512);"
+    results = mysql.mysql_query(query % username % passwd)
+    if 1 == len(results):
+        for row in results:
+            result = row["id"]
+    elif 0 == len(results):
+        result = "Unable to sign in, please register before login or verify your username and password"
+    return result
 
 
 """
@@ -38,8 +51,8 @@ def SignIn(self, Username, Password):
 """
 
 
-def DelUser(self, UserId):
-	return
+def DelUser(UserId):
+    return
 
 
 """
@@ -52,6 +65,6 @@ def DelUser(self, UserId):
 """
 
 
-def SignIn(self, UserId):
-	return
+def SignIn(UserId):
+    return
 
