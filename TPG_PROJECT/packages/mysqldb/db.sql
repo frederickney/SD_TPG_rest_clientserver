@@ -8,7 +8,8 @@ drop table if exists `users`;
 create table `users`(
   `id` int(10) unsigned not null auto_increment,
   `username` varchar(32) not null,
-  `password` varchar(256) not null,
+  `password` varchar(512) not null,
+  `logged`  TINYINT not null,
   primary key(`id`, `username`),
   key (`id`)
   )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

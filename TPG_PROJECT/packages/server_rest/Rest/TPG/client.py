@@ -1,9 +1,10 @@
 __author__ = 'Frederick NEY & Stephane Overlen'
 
-import Rest.TPG.sources
+from  sources import *
 import requests
 import xml.etree.ElementTree as xmlparser
 import itertools
+import xmltodict, json
 
 
 """
@@ -24,8 +25,9 @@ def get_disruptions(datatype = None):
         return requests.get(url, param).json()['disruptions']
     elif "xml" == datatype:
         content = requests.get(url, param).text
-        xmlparse = xmlparser.fromstring(content)
-        return xmlparser.parse(xmlparse)
+        xml_dict = xmltodict.parse(content)
+        json_conv = json.loads(json.dumps(xml_dict), 'utf-8')['disruptions']['disruptions']
+        return json_conv
     else:
         return requests.get(url, param).json()['disruptions']
 
@@ -61,8 +63,8 @@ def get_stops(request_code = None, request_data = None, datatype = None):
                 result .append(content)
             elif "xml" == datatype:
                 content = requests.get(url, param).text
-                xmlparse = xmlparser.fromstring(content)
-                result.append(xmlparser.parse(xmlparse))
+                xml_dict = xmltodict.parse(content)
+                result.append(json.loads(json.dumps(xml_dict), 'utf-8')["stops"]["stops"])
             else:
                 content = requests.get(url, param).json()["stops"]
                 result .append(content)
@@ -73,8 +75,8 @@ def get_stops(request_code = None, request_data = None, datatype = None):
                 result .append(content)
         elif "xml" == datatype:
             content = requests.get(url, param).text
-            xmlparse = xmlparser.fromstring(content)
-            result.append(xmlparser.parse(xmlparse))
+            xml_dict = xmltodict.parse(content)
+            result.append(json.loads(json.dumps(xml_dict), 'utf-8')["stops"]["stops"])
         else:
             content = requests.get(url, param).json()["stops"]
             result .append(content)
@@ -105,8 +107,8 @@ def get_localisation(latitudes, longitudes, datatype = None):
             result.append(content)
         elif "xml" == datatype:
             content = requests.get(url, param).text
-            xmlparse = xmlparser.fromstring(content)
-            result.append(xmlparser.parse(xmlparse))
+            xml_dict = xmltodict.parse(content)
+            result.append(json.loads(json.dumps(xml_dict), 'utf-8')['stops']['stops'])
         else:
             content = requests.get(url, param).json()["stops"]
             result.append(content)
@@ -138,8 +140,8 @@ def get_physical_stops(request_code, request_data, datatype = None,):
             result.append(content)
         elif "xml" == datatype:
             content = requests.get(url, param).text
-            xmlparse = xmlparser.fromstring(content)
-            result.append(xmlparser.parse(xmlparse))
+            xml_dict = xmltodict.parse(content)
+            result.append(json.loads(json.dumps(xml_dict), 'utf-8')['stops']['stops'])
         else:
             content = requests.get(url, param).json()["stops"]
             result.append(content)
@@ -177,12 +179,11 @@ def get_next_departure(request_code, request_data, datatype = None):
             result.append(content)
         elif "xml" == datatype:
             content = requests.get(url, param).text
-            xmlparse = xmlparser.fromstring(content)
-            result.append(xmlparser.parse(xmlparse))
+            xml_dict = xmltodict.parse(content)
+            result.append(json.loads(json.dumps(xml_dict), 'utf-8'))
         else:
             content = requests.get(url, param).json()
             del content['timestamp']
-            content["departures"] = remove_timestamp(content["departures"])
             result.append(content)
     return result
 

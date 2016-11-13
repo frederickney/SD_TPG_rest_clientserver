@@ -34,7 +34,7 @@ def list_available_stop(datatype):
 
 
 @app.route('/list/stop/subscribed', defaults={'datatype': None}, methods=['GET'])
-@app.route('/list/stop/subscribed?<path:datatype>', methods=['GET'])
+@app.route('/list/stop/subscribed<path:datatype>?', methods=['GET'])
 def get_subscribed(datatype):
     print (request.args.get('id'))
     print (request.args.get('username'))
