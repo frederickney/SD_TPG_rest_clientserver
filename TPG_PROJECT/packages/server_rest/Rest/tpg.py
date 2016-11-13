@@ -1,3 +1,9 @@
+__author__ = 'Frederick NEY & Stephane Overlen'
+
+from User.user import *
+from TPG.client import *
+
+
 """
 @api {get} /stop/available/ GetAvailableStops()
 
