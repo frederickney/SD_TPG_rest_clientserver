@@ -48,7 +48,7 @@ def sign_in(username, passwd):
         for row in results:
             result = {"id": row[0], "hash": hashlib.sha512(str(row[0]).encode('utf-8') + row[1].encode('utf-8') + row[2].encode('utf-8')).hexdigest()}
             query = "update users set logged = 1 where id = %i;"
-            mysql.mysql_query(query % row[0])
+            mysql.mysql_query(query % row[0], "update")
             return result
     elif 0 == len(results):
         result = "Unable to sign in, please register before login or verify your username and password"
@@ -100,7 +100,7 @@ def del_user(id, hash):
 def sign_out(id, hash):
     if 1 == auth_cookie(id, hash):
         query = "update users set logged = 0 where id = %i;"
-        result = mysql.mysql_query(query % id)
+        result = mysql.mysql_query(query % id, "update")
         if 0 < result:
             return "logged out."
     else:

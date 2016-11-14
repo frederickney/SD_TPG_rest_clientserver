@@ -27,7 +27,7 @@ def mysql_query(query, type = None):
         cursor = cnx.cursor()
         try:
             result = cursor.execute(query)
-            if "insert" == type or "delete" == type:
+            if "insert" == type or "delete" == type or "update" == type:
                 cnx.commit()
             else:
                 result = cursor.fetchall()
