@@ -17,8 +17,10 @@ import hashlib
 
 
 def add_user(username, passwd):
-    query = "Insert into users (id, username, password) values ( NULL, '%s', SHA2('%s', 512));"
-    result = mysql.mysql_query(query % username % passwd, "insert")
+    print (type(username))
+    query = "Insert into users (id, username, password, logged) values ( NULL, '%s', SHA2('%s', 512), 0);"
+    print (query % (username, passwd))
+    result = mysql.mysql_query(query % (username, passwd), "insert")
     if 0 == result:
         return "Unable to register your user."
     else:
@@ -39,18 +41,14 @@ def add_user(username, passwd):
 
 
 def sign_in(username, passwd):
-    query = "Select * from user where username = '%s' and password = SHA2('%s', 512);"
-    results = mysql.mysql_query(query % username % passwd)
-    if 0 > results:
-        result = "Unable to sign in, please register before login or verify your username and password"
+    query = "Select * from users where username = '%s' and password = SHA2('%s', 512);"
+    results = mysql.mysql_query(query % (username, passwd))
     if 1 == len(results):
         """ /* setting up cookie for user registered */ """
         for row in results:
-            result = {"id", "hash"}
-            result["id"] = row["id"]
-            result["hash"] = hashlib.sha512(row["id"] + row["user"] + row["password"]).hexdigest()
-            query = "update user set logged = 1 where id = %i;"
-            mysql.mysql_query(query % id)
+            result = {"id": row[0], "hash": hashlib.sha512(str(row[0]).encode('utf-8') + row[1].encode('utf-8') + row[2].encode('utf-8')).hexdigest()}
+            query = "update users set logged = 1 where id = %i;"
+            mysql.mysql_query(query % row[0])
             return result
     elif 0 == len(results):
         result = "Unable to sign in, please register before login or verify your username and password"
@@ -101,7 +99,7 @@ def del_user(id, hash):
 
 def sign_out(id, hash):
     if 1 == auth_cookie(id, hash):
-        query = "update user set logged = 0 where id = %i;"
+        query = "update users set logged = 0 where id = %i;"
         result = mysql.mysql_query(query % id)
         if 0 < result:
             return "logged out."
@@ -110,15 +108,13 @@ def sign_out(id, hash):
 
 
 def auth_cookie(id, hash):
-    query = "Select * from user where id = %i;"
+    query = "Select * from users where id = %i;"
     results = mysql.mysql_query(query % id)
-    if 0 > results:
-        return 0
     if 1 == len(results):
         """ /* authentify user */ """
         for row in results:
-            hash_verify = hashlib.sha512(row["id"] + row["user"] + row["password"]).hexdigest()
-            if hash == hash_verify and row["logged"] == 1:
+            hash_verify = hashlib.sha512(str(row[0]).encode('utf-8') + row[1].encode('utf-8') + row[2].encode('utf-8')).hexdigest()
+            if hash == hash_verify and row[3] == 1:
                 return 1
             else:
                 return 0

@@ -47,6 +47,8 @@ def list_available_stop(datatype):
     if None == hash and None == id:
         return jsonify(error="Bad request.")
     id = int(id)
+    print(id)
+    print(hash)
     if 1 == user.auth_cookie(id, hash):
         return jsonify(stop_available=client.get_stops())
     return jsonify(error="Bad request.")
@@ -75,7 +77,7 @@ def list_stop_subscribed(datatype):
     id = int(id)
     if 1 == user.auth_cookie(id, hash):
         query = "Select * from subscriptions where user_id = %i"
-        results = mysql.mysql_query(query)
+        results = mysql.mysql_query(query % id)
         stop_code = []
         for result in results:
             stop_code.append(result["stop_id"])
@@ -143,7 +145,7 @@ def subscribe():
     if 1 == user.auth_cookie(id, hash):
         query = "insert into subscriptions (stop_id, user_id) values ('%s', %i);"
         for stop in stop_name:
-            mysql.mysql_query(query % stop % id, "insert")
+            mysql.mysql_query(query % (stop, id), "insert")
         return jsonify(error="Success.")
     return jsonify(error="Bad request.")
 
@@ -254,8 +256,8 @@ def list_next_departure_for_handicaped(datatype):
 
 @app.route('/usr/signIn', methods=['POST'])
 def __sign_in__():
-    passwd = request.json['passwd']
-    username = request.json['username']
+    username = request.form.get('username')
+    passwd = request.form.get('passwd')
     if not None == passwd and not None == username:
         cookie = user.sign_in(username, passwd)
         if 2 == len(cookie):
@@ -266,29 +268,27 @@ def __sign_in__():
 
 @app.route('/usr/del', methods=['POST'])
 def __del_user__():
-    id = request.json['id']
-    hash = request.json['hash']
+    id = request.form.get('id', type=int)
+    hash = request.form.get('hash')
     if not None == id and not None == hash:
-        id = int(id)
         return jsonify(error=user.del_user(id, hash))
     return jsonify(error="Bad request.")
 
 
 @app.route('/usr/add', methods=['POST'])
-def __add_user__(passwd, user):
-    passwd = request.json['passwd']
-    username = request.json['username']
+def __add_user__():
+    username = request.form.get('username')
+    passwd = request.form.get('passwd')
     if not None == passwd and not None == username:
         return jsonify(error=user.add_user(username, passwd))
     return jsonify(error="Bad request.")
 
 
 @app.route('/usr/signOut', methods=['POST'])
-def __sign_out__(uid, user):
-    id = request.json['id']
-    hash = request.json['hash']
+def __sign_out__():
+    id = request.form.get('id', type=int)
+    hash = request.form.get('hash')
     if not None == id and not None == hash:
-        id = int(id)
         return jsonify(error=user.sign_out(id, hash))
     return jsonify(error="Bad request.")
 
