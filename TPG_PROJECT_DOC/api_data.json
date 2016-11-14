@@ -1,143 +1,42 @@
 [
   {
     "type": "get",
-    "url": "/stop/available/",
-    "title": "GetAvailableStops()",
-    "name": "GetAvailableStops",
-    "group": "Tpg",
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "String",
-            "allowedValues": [
-              "StopList"
-            ],
-            "optional": false,
-            "field": "StopList",
-            "description": "<p>list of available stop</p>"
-          }
-        ]
-      }
-    },
-    "version": "0.0.0",
-    "filename": "TPG_PROJECT/packages/server_rest/tpg/tpg.py",
-    "groupTitle": "Tpg"
-  },
-  {
-    "type": "get",
-    "url": "/stop/bus/handicappedEquiped/:stopName",
-    "title": "GetHandicappedEquiped()",
-    "name": "GetHandicappedEquiped",
-    "group": "Tpg",
+    "url": "/list/stop/around500Meter?id=ID&hash=HASH&latitude=LAT&longitude=LONG",
+    "title": "get_stop_localisation()",
+    "name": "get_stop_localisation",
+    "group": "TPG",
     "parameter": {
       "fields": {
         "Parameter": [
           {
             "group": "Parameter",
-            "type": "String",
+            "type": "ID",
             "allowedValues": [
-              "StopName"
+              "Integer"
             ],
             "optional": false,
-            "field": "StopName",
-            "description": ""
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "String",
-            "allowedValues": [
-              "HandiBus"
-            ],
-            "optional": false,
-            "field": "HandiBus",
-            "description": "<p>Handicaped bus list</p>"
-          }
-        ]
-      }
-    },
-    "version": "0.0.0",
-    "filename": "TPG_PROJECT/packages/server_rest/tpg/tpg.py",
-    "groupTitle": "Tpg"
-  },
-  {
-    "type": "get",
-    "url": "/stop/:positionx/:positiony",
-    "title": "ListStopByPosition()",
-    "name": "ListStopByPosition",
-    "group": "Tpg",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Integer",
-            "allowedValues": [
-              "Positionx",
-              "Positiony"
-            ],
-            "optional": false,
-            "field": "Specific",
-            "description": "<p>location</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "String",
-            "allowedValues": [
-              "ListStopByPosition"
-            ],
-            "optional": false,
-            "field": "ListStopByPosition",
-            "description": "<p>Stop bus list by specific location</p>"
-          }
-        ]
-      }
-    },
-    "version": "0.0.0",
-    "filename": "TPG_PROJECT/packages/server_rest/tpg/tpg.py",
-    "groupTitle": "Tpg"
-  },
-  {
-    "type": "get",
-    "url": "/stop/bus/subscribed/:userId/:stopName",
-    "title": "NextBusList()",
-    "name": "NextBusList",
-    "group": "Tpg",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Integer",
-            "allowedValues": [
-              "UserId"
-            ],
-            "optional": false,
-            "field": "UserId",
-            "description": ""
+            "field": "user",
+            "description": "<p>id</p>"
           },
           {
             "group": "Parameter",
-            "type": "String",
+            "type": "HASH",
             "allowedValues": [
-              "StopName"
+              "string"
             ],
             "optional": false,
-            "field": "StopName",
-            "description": ""
+            "field": "session",
+            "description": "<p>hash</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "LAT",
+            "allowedValues": [
+              "float[]"
+            ],
+            "optional": false,
+            "field": "list",
+            "description": "<p>of latitude</p>"
           }
         ]
       }
@@ -147,124 +46,407 @@
         "Success 200": [
           {
             "group": "Success 200",
-            "type": "String",
+            "type": "return",
             "allowedValues": [
-              "NextBusList"
+              "string[]"
             ],
             "optional": false,
-            "field": "NextBusList",
-            "description": "<p>list of next bus</p>"
+            "field": "list",
+            "description": "<p>of stops around 500 meters for a location</p>"
           }
         ]
       }
     },
     "version": "0.0.0",
-    "filename": "TPG_PROJECT/packages/server_rest/tpg/tpg.py",
-    "groupTitle": "Tpg"
+    "filename": "source_doc/doc.py",
+    "groupTitle": "TPG"
   },
   {
     "type": "get",
-    "url": "/stop/subscribe/:userId",
-    "title": "Subscribe()",
-    "name": "Subscribe",
-    "group": "Tpg",
+    "url": "/stop/available?id=ID&hash=HASH",
+    "title": "list_available_stop()",
+    "name": "list_available_stop",
+    "group": "TPG",
     "parameter": {
       "fields": {
         "Parameter": [
           {
             "group": "Parameter",
-            "type": "Integer",
+            "type": "ID",
             "allowedValues": [
-              "UserId"
+              "Integer"
             ],
             "optional": false,
-            "field": "UserId",
-            "description": "<p>User's identifier</p>"
-          }
-        ]
-      }
-    },
-    "version": "0.0.0",
-    "filename": "TPG_PROJECT/packages/server_rest/tpg/tpg.py",
-    "groupTitle": "Tpg"
-  },
-  {
-    "type": "get",
-    "url": "/stop/unsubscribe/:stopName/:userId",
-    "title": "Unsubscribe()",
-    "name": "Unsubscribe",
-    "group": "Tpg",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "allowedValues": [
-              "StopName"
-            ],
-            "optional": false,
-            "field": "StopName",
-            "description": "<p>Stop's name</p>"
+            "field": "user",
+            "description": "<p>id</p>"
           },
           {
             "group": "Parameter",
-            "type": "Integer",
+            "type": "HASH",
             "allowedValues": [
-              "UserId"
+              "string"
             ],
             "optional": false,
-            "field": "UserId",
-            "description": "<p>User's Identifier</p>"
+            "field": "session",
+            "description": "<p>hash</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "return",
+            "allowedValues": [
+              "string[]"
+            ],
+            "optional": false,
+            "field": "list",
+            "description": "<p>of available stop</p>"
           }
         ]
       }
     },
     "version": "0.0.0",
-    "filename": "TPG_PROJECT/packages/server_rest/tpg/tpg.py",
-    "groupTitle": "Tpg"
+    "filename": "source_doc/doc.py",
+    "groupTitle": "TPG"
+  },
+  {
+    "type": "get",
+    "url": "/list/stop/subscribed/nextDeparture?id=ID&hash=HASH&stopName=STOPNAME&code=CODE",
+    "title": "list_next_departure()",
+    "name": "list_next_departure",
+    "group": "TPG",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "ID",
+            "allowedValues": [
+              "Integer"
+            ],
+            "optional": false,
+            "field": "user",
+            "description": "<p>id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "HASH",
+            "allowedValues": [
+              "string"
+            ],
+            "optional": false,
+            "field": "session",
+            "description": "<p>hash</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "STOPNAME",
+            "allowedValues": [
+              "string[]"
+            ],
+            "optional": false,
+            "field": "list",
+            "description": "<p>of stop</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "CODE",
+            "allowedValues": [
+              "string"
+            ],
+            "optional": false,
+            "field": "optional",
+            "description": "<p>should be 'stopName' or 'stopCode'</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "return",
+            "allowedValues": [
+              "string[]"
+            ],
+            "optional": false,
+            "field": "List",
+            "description": "<p>of departure</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "source_doc/doc.py",
+    "groupTitle": "TPG"
+  },
+  {
+    "type": "get",
+    "url": "/list/stop/subscribed/nextDeparture/handicaped?id=ID&hash=HASH&stopName=STOPCODE&code=CODE",
+    "title": "list_next_departure_for_handicaped()",
+    "name": "list_next_departure_for_handicaped",
+    "group": "TPG",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "ID",
+            "allowedValues": [
+              "Integer"
+            ],
+            "optional": false,
+            "field": "user",
+            "description": "<p>id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "HASH",
+            "allowedValues": [
+              "string"
+            ],
+            "optional": false,
+            "field": "session",
+            "description": "<p>hash</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "STOPCODE",
+            "allowedValues": [
+              "string[]"
+            ],
+            "optional": false,
+            "field": "list",
+            "description": "<p>of stop</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "CODE",
+            "allowedValues": [
+              "string"
+            ],
+            "optional": false,
+            "field": "optional",
+            "description": "<p>should be 'stopName' or 'stopCode'</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "return",
+            "allowedValues": [
+              "string[]"
+            ],
+            "optional": false,
+            "field": "List",
+            "description": "<p>of departure with handicapped capabilities</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "source_doc/doc.py",
+    "groupTitle": "TPG"
+  },
+  {
+    "type": "get",
+    "url": "/list/stop/subscribed?id=ID&hash=HASH",
+    "title": "list_stop_subscribed()",
+    "name": "list_stop_subscribed",
+    "group": "TPG",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "ID",
+            "allowedValues": [
+              "Integer"
+            ],
+            "optional": false,
+            "field": "user",
+            "description": "<p>id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "HASH",
+            "allowedValues": [
+              "string"
+            ],
+            "optional": false,
+            "field": "session",
+            "description": "<p>hash</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "string[]",
+            "allowedValues": [
+              "return"
+            ],
+            "optional": false,
+            "field": "list",
+            "description": "<p>of stop</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "source_doc/doc.py",
+    "groupTitle": "TPG"
+  },
+  {
+    "type": "get",
+    "url": "/list/stop/subscribe?id=ID&hash=HASH&stopName=STOPCODE",
+    "title": "subscribe()",
+    "name": "subscribe",
+    "group": "TPG",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "ID",
+            "allowedValues": [
+              "Integer"
+            ],
+            "optional": false,
+            "field": "user",
+            "description": "<p>id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "HASH",
+            "allowedValues": [
+              "string"
+            ],
+            "optional": false,
+            "field": "session",
+            "description": "<p>hash</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "STOPCODE",
+            "allowedValues": [
+              "string[]"
+            ],
+            "optional": false,
+            "field": "list",
+            "description": "<p>of stop</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "return",
+            "allowedValues": [
+              "string"
+            ],
+            "optional": false,
+            "field": "error",
+            "description": "<p>code</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "source_doc/doc.py",
+    "groupTitle": "TPG"
+  },
+  {
+    "type": "get",
+    "url": "/list/stop/unsubscribe?stopName=STOPCODE&id=ID&hash=HASH",
+    "title": "un_subscribe()",
+    "name": "un_subscribe",
+    "group": "TPG",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "ID",
+            "allowedValues": [
+              "Integer"
+            ],
+            "optional": false,
+            "field": "user",
+            "description": "<p>id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "HASH",
+            "allowedValues": [
+              "string"
+            ],
+            "optional": false,
+            "field": "session",
+            "description": "<p>hash</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "STOPCODE",
+            "allowedValues": [
+              "string[]"
+            ],
+            "optional": false,
+            "field": "list",
+            "description": "<p>of stop</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "return",
+            "allowedValues": [
+              "string"
+            ],
+            "optional": false,
+            "field": "error",
+            "description": "<p>code</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "source_doc/doc.py",
+    "groupTitle": "TPG"
   },
   {
     "type": "post",
-    "url": "/usr/del/:userId",
-    "title": "DelUser()",
-    "name": "DelUser",
+    "url": "/usr/add",
+    "title": "add_user()",
+    "name": "add_user",
     "group": "User",
     "parameter": {
       "fields": {
         "Parameter": [
           {
             "group": "Parameter",
-            "type": "Integer",
+            "type": "USERNAME",
             "allowedValues": [
-              "UserId"
-            ],
-            "optional": false,
-            "field": "UserId",
-            "description": "<p>user's id</p>"
-          }
-        ]
-      }
-    },
-    "version": "0.0.0",
-    "filename": "TPG_PROJECT/packages/server_rest/user/user.py",
-    "groupTitle": "User"
-  },
-  {
-    "type": "post",
-    "url": "/usr/add/:userName/:password",
-    "title": "SetUser()",
-    "name": "SetUser",
-    "group": "User",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "allowedValues": [
-              "Username",
-              "Password"
+              "string"
             ],
             "optional": false,
             "field": "user",
@@ -273,25 +455,92 @@
         ]
       }
     },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "return",
+            "allowedValues": [
+              "string[]"
+            ],
+            "optional": false,
+            "field": "message",
+            "description": ""
+          }
+        ]
+      }
+    },
     "version": "0.0.0",
-    "filename": "TPG_PROJECT/packages/server_rest/user/user.py",
+    "filename": "source_doc/doc.py",
     "groupTitle": "User"
   },
   {
     "type": "post",
-    "url": "/usr/signin/:userName/password",
-    "title": "SignIn()",
-    "name": "SignIn",
+    "url": "/usr/del",
+    "title": "del_user()",
+    "name": "del_user",
     "group": "User",
     "parameter": {
       "fields": {
         "Parameter": [
           {
             "group": "Parameter",
-            "type": "String",
+            "type": "ID",
             "allowedValues": [
-              "Username",
-              "Password"
+              "Integer"
+            ],
+            "optional": false,
+            "field": "user",
+            "description": "<p>id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "HASH",
+            "allowedValues": [
+              "string"
+            ],
+            "optional": false,
+            "field": "session",
+            "description": "<p>hash</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "return",
+            "allowedValues": [
+              "string[]"
+            ],
+            "optional": false,
+            "field": "message",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "source_doc/doc.py",
+    "groupTitle": "User"
+  },
+  {
+    "type": "post",
+    "url": "/usr/signIn",
+    "title": "sign_in()",
+    "name": "sign_in",
+    "group": "User",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "USERNAME",
+            "allowedValues": [
+              "string"
             ],
             "optional": false,
             "field": "user",
@@ -300,34 +549,76 @@
         ]
       }
     },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "return",
+            "allowedValues": [
+              "string[]"
+            ],
+            "optional": false,
+            "field": "message",
+            "description": "<p>or session</p>"
+          }
+        ]
+      }
+    },
     "version": "0.0.0",
-    "filename": "TPG_PROJECT/packages/server_rest/user/user.py",
+    "filename": "source_doc/doc.py",
     "groupTitle": "User"
   },
   {
     "type": "post",
-    "url": "/usr/signout/:userId",
-    "title": "SignOut()",
-    "name": "SignOut",
+    "url": "/usr/signOut",
+    "title": "sign_out()",
+    "name": "sign_out",
     "group": "User",
     "parameter": {
       "fields": {
         "Parameter": [
           {
             "group": "Parameter",
-            "type": "Integer",
+            "type": "ID",
             "allowedValues": [
-              "UserId"
+              "Integer"
             ],
             "optional": false,
-            "field": "UserId",
-            "description": "<p>user's id</p>"
+            "field": "user",
+            "description": "<p>id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "HASH",
+            "allowedValues": [
+              "string"
+            ],
+            "optional": false,
+            "field": "session",
+            "description": "<p>hash</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "return",
+            "allowedValues": [
+              "string[]"
+            ],
+            "optional": false,
+            "field": "message",
+            "description": ""
           }
         ]
       }
     },
     "version": "0.0.0",
-    "filename": "TPG_PROJECT/packages/server_rest/user/user.py",
+    "filename": "source_doc/doc.py",
     "groupTitle": "User"
   }
 ]

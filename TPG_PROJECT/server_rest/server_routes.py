@@ -35,7 +35,7 @@ def parse_datatype(datatype):
 @apiParam   {id = integer} id of the user
 @apiParam   {hash = string} hash code of the cookie
 
-@apiSuccess {list of string} list of available stop
+@apiSuccess {result = list of string} list of available stop
 """
 
 
@@ -63,7 +63,7 @@ def list_available_stop(datatype):
 @apiParam   {id = integer} id of the user
 @apiParam   {hash = string} hash code of the cookie
 
-@apiSuccess {list of string} list of stop
+@apiSuccess {result = list of string} list of stop
 """
 
 
@@ -95,7 +95,7 @@ def list_stop_subscribed(datatype):
 @apiParam   {stopName = list of string}  list of stop
 @apiParam   {code = string} optional should be stopName or stopCode
 
-@apiSuccess {list of string} List of departure
+@apiSuccess {result = list of string} List of departure
 """
 
 
@@ -127,7 +127,7 @@ def list_next_departure(datatype):
 @apiParam   {stopName = list of string}  list of stop
 @apiParam   {code = string} optional should be stopName or stopCode
 
-@apiSuccess {string} error code
+@apiSuccess {result = string} error code
 """
 
 
@@ -162,7 +162,7 @@ def subscribe():
 @apiParam   {stopName = list of string}  list of stop
 @apiParam   {code = string} optional should be stopName or stopCode
 
-@apiSuccess {string} error code
+@apiSuccess {result = string} error code
 """
 
 
@@ -196,7 +196,7 @@ def un_subscribe():
 @apiParam   {latitude = list of float} list of latitude
 @apiParam   {longitude = list of float} list of longitude
 
-@apiSuccess {list of string} list of stops around 500 meters for a location
+@apiSuccess {result = list of string} list of stops around 500 meters for a location
 """
 
 
@@ -226,7 +226,7 @@ def get_stop_localisation(datatype):
 @apiParam   {stopName = list of string}  list of stop
 @apiParam   {code = string} optional should be stopName or stopCode
 
-@apiSuccess {list of string} List of departure with handicapped capabilities
+@apiSuccess {result = list of string} List of departure with handicapped capabilities
 """
 
 

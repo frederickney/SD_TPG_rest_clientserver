@@ -4,22 +4,21 @@ import hashlib
 
 
 """
-@api {post} /usr/add?userName=&password= SetUser()
+@api {post} /usr/add?userName=&password= add_user()
 
-@apiName SetUser
+@apiName add_user
 @apiGroup User
 
-@apiParam {Username = string} user's credentials
-@apiParam {Password = string} user's credentials
+@apiParam {string = USERNAMe} user's credentials
+@apiParam {string = PASSWD} user's credentials
 
-@apiSuccess {string} message
+@apiSuccess {string = return} message
 """
 
 
 def add_user(username, passwd):
     print (type(username))
     query = "Insert into users (id, username, password, logged) values ( NULL, '%s', SHA2('%s', 512), 0);"
-    print (query % (username, passwd))
     result = mysql.mysql_query(query % (username, passwd), "insert")
     if 0 == result:
         return "Unable to register your user."
@@ -28,15 +27,15 @@ def add_user(username, passwd):
 
 
 """
-@api {post} /usr/signIn?username=&passwd= SignIn()
+@api {post} /usr/signIn?username=USERNAME&passwd=PASSWD sign_in()
 
-@apiName SignIn
+@apiName sign_in
 @apiGroup User
 
-@apiParam {Username = string} user's credentials
-@apiParam {Password = string} user's credentials
+@apiParam {string = USERNAME} user's credentials
+@apiParam {string = PASSWD} user's credentials
 
-@apiSuccess {string or cookie} message or session
+@apiSuccess {string or cookie = return} message or session
 """
 
 
@@ -56,15 +55,15 @@ def sign_in(username, passwd):
 
 
 """
-@api {post} /usr/del?id=&hash= DelUser()
+@api {post} /usr/del?id=ID&hash=HASH del_user()
 
-@apiName DelUser
+@apiName del_user
 @apiGroup User
 
-@apiParam {id = integer} user id
-@apiParam {hash = string} session hash
+@apiParam {integer = ID} user id
+@apiParam {string = HASH} session hash
 
-@apiSuccess {string} message
+@apiSuccess {string = result} message
 """
 
 
@@ -85,15 +84,15 @@ def del_user(id, hash):
 
 
 """
-@api {post} /usr/signOut?id=&hash= SignOut()
+@api {post} /usr/signOut?id=ID&hash=HASH sign_out()
 
-@apiName SignOut
+@apiName sign_out
 @apiGroup User
 
-@apiParam {Integer= id} user id
-@apiParam {hash = string} session hash
+@apiParam {Integer = ID} user id
+@apiParam {string = HASH} session hash
 
-@apiSuccess {string} message
+@apiSuccess {result = string} message
 """
 
 
