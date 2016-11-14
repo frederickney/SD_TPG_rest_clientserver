@@ -4,12 +4,15 @@ import hashlib
 
 
 """
-@api {post} /usr/add/:userName/:password SetUser()
+@api {post} /usr/add?userName=&password= SetUser()
 
 @apiName SetUser
 @apiGroup User
 
-@apiParam {String= Username, Password} user's credentials
+@apiParam {Username = string} user's credentials
+@apiParam {Password = string} user's credentials
+
+@apiSuccess {string} message
 """
 
 
@@ -18,23 +21,28 @@ def add_user(username, passwd):
     result = mysql.mysql_query(query % username % passwd, "insert")
     if 0 == result:
         return "Unable to register your user."
-    elif 1 == result:
+    else:
         return "User registered"
 
 
 """
-@api {post} /usr/signin/:userName/password SignIn()
+@api {post} /usr/signIn?username=&passwd= SignIn()
 
 @apiName SignIn
 @apiGroup User
 
-@apiParam {String= Username, Password} user's credentials
+@apiParam {Username = string} user's credentials
+@apiParam {Password = string} user's credentials
+
+@apiSuccess {string or cookie} message or session
 """
 
 
 def sign_in(username, passwd):
     query = "Select * from user where username = '%s' and password = SHA2('%s', 512);"
     results = mysql.mysql_query(query % username % passwd)
+    if 0 > results:
+        result = "Unable to sign in, please register before login or verify your username and password"
     if 1 == len(results):
         """ /* setting up cookie for user registered */ """
         for row in results:
@@ -50,12 +58,15 @@ def sign_in(username, passwd):
 
 
 """
-@api {post} /usr/del/:userId DelUser()
+@api {post} /usr/del?id=&hash= DelUser()
 
 @apiName DelUser
 @apiGroup User
 
-@apiParam {Integer= UserId} UserId user's id
+@apiParam {id = integer} user id
+@apiParam {hash = string} session hash
+
+@apiSuccess {string} message
 """
 
 
@@ -76,20 +87,24 @@ def del_user(id, hash):
 
 
 """
-@api {post} /usr/signout/:userId SignOut()
+@api {post} /usr/signOut?id=&hash= SignOut()
 
 @apiName SignOut
 @apiGroup User
 
-@apiParam {Integer= UserId} UserId user's id
+@apiParam {Integer= id} user id
+@apiParam {hash = string} session hash
+
+@apiSuccess {string} message
 """
 
 
 def sign_out(id, hash):
     if 1 == auth_cookie(id, hash):
         query = "update user set logged = 0 where id = %i;"
-        mysql.mysql_query(query % id)
-        return "logged out."
+        result = mysql.mysql_query(query % id)
+        if 0 < result:
+            return "logged out."
     else:
         return "unable to log out."
 
