@@ -47,8 +47,6 @@ def list_available_stop(datatype):
     if None == hash and None == id:
         return jsonify(error="Bad request.")
     id = int(id)
-    print(id)
-    print(hash)
     if 1 == user.auth_cookie(id, hash):
         return jsonify(stop_available=client.get_stops())
     return jsonify(error="Bad request.")
@@ -104,7 +102,7 @@ def list_stop_subscribed(datatype):
 def list_next_departure(datatype):
     id = request.args.get('id')
     hash = request.args.get('hash')
-    stop_name = request.args.getlist('stopName')
+    stop_name = request.args.getlist('stopCode')
     request_code = request.args.get('code')
     if None == request_code:
         request_code = "stopName"
@@ -216,9 +214,9 @@ def get_stop_localisation(datatype):
 
 
 """
-@api {get} /list/stop/subscribed/nextDeparture/handicaped?id=&hash=&stopName= list_next_departure_for_handicaped()
+@api {get} /list/stop/subscribed/nextDeparture/handicapped?id=&hash=&stopName= list_next_departure_for_handicaped()
 
-@apiName list_next_departure_for_handicaped
+@apiName list_next_departure_for_handicapped
 @apiGroup TPG
 
 @apiParam   {id = integer} id of the user
@@ -232,10 +230,10 @@ def get_stop_localisation(datatype):
 
 @app.route('/list/stop/subscribed/nextDeparture/handicapped', methods=['GET'], defaults={'datatype': None})
 @app.route('/list/stop/subscribed/nextDeparture/handicapped<path:datatype>', methods=['GET'])
-def list_next_departure_for_handicaped(datatype):
+def list_next_departure_for_handicapped(datatype):
     id = request.args.get('id')
     hash = request.args.get('hash')
-    stop_name = request.args.getlist('stopName')
+    stop_name = request.args.getlist('stopCode')
     request_code = request.args.get('code')
     if None == request_code:
         request_code = "stopName"
@@ -243,7 +241,16 @@ def list_next_departure_for_handicaped(datatype):
         return jsonify(error="Bad request.")
     id = int(id)
     if 1 == user.auth_cookie(id, hash):
-        return jsonify(next_departure_handicaped=client.get_next_departure(request_code, stop_name))
+        stops = client.get_next_departure(request_code, stop_name)
+        size = len(stop_name)
+        for i in range(size):
+            dep_size = len(stops[i]['departures'])
+            departures = []
+            for j in range(dep_size):
+                if 'characteristics' in stops[i]['departures'][j]:
+                    departures.append(stops[i]['departures'][j])
+            stops[i]['departures'] = departures
+        return jsonify(next_departure_handicaped=stops)
     return jsonify(error="Bad request.")
 
 
