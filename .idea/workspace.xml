@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3acaef19-61a4-4881-b528-fe3ea1ce789c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/source_doc/doc.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NEY_OVERLEN_DOC.zip" afterPath="$PROJECT_DIR$/NEY_OVERLEN_DOC.zip" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TPG_PROJECT_DOC/api_data.js" afterPath="$PROJECT_DIR$/TPG_PROJECT_DOC/api_data.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TPG_PROJECT_DOC/api_data.json" afterPath="$PROJECT_DIR$/TPG_PROJECT_DOC/api_data.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TPG_PROJECT_DOC/api_project.js" afterPath="$PROJECT_DIR$/TPG_PROJECT_DOC/api_project.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TPG_PROJECT_DOC/api_project.json" afterPath="$PROJECT_DIR$/TPG_PROJECT_DOC/api_project.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TPG_PROJECT/client_rest/cmd_loop/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TPG_PROJECT/client_rest/api_client.py" afterPath="$PROJECT_DIR$/TPG_PROJECT/client_rest/api_client.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source_doc/doc.py" afterPath="$PROJECT_DIR$/source_doc/doc.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TPG_PROJECT/server_rest/server_routes.py" afterPath="$PROJECT_DIR$/TPG_PROJECT/server_rest/server_routes.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TPG_PROJECT/server_rest/Rest/User/user.py" afterPath="$PROJECT_DIR$/TPG_PROJECT/server_rest/Rest/User/user.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SD_TPG_rest_clientserver.iws" />
@@ -30,42 +25,43 @@
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="doc.py" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/source_doc/doc.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="0.52681386" vertical-offset="1785" max-vertical-offset="2736">
+                    <caret line="127" column="44" selection-start-line="127" selection-start-column="44" selection-end-line="127" selection-end-column="44" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="SD_TPG_rest_clientserver" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="server_routes.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="server_routes.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TPG_PROJECT/server_rest/server_routes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5483871" vertical-offset="4464" max-vertical-offset="5400">
-              <caret line="272" column="26" selection-start-line="272" selection-start-column="26" selection-end-line="272" selection-end-column="26" />
+            <state vertical-scroll-proportion="-3.107143" vertical-offset="3657" max-vertical-offset="5508">
+              <caret line="208" column="58" selection-start-line="208" selection-start-column="47" selection-end-line="208" selection-end-column="58" />
               <folding>
-                <marker date="1479140936027" expanded="true" signature="2477:2521" placeholder="Select * fro..subscriptions..." />
-                <marker date="1479140936027" expanded="true" signature="4764:4826" placeholder="insert into ..." />
-                <marker date="1479140936027" expanded="true" signature="5910:5952" placeholder="delete from ..." />
+                <element signature="e#49#58#0" expanded="true" />
+                <marker date="1479185231407" expanded="true" signature="2447:2497" placeholder="Select * fro..subscriptions..." />
+                <marker date="1479185231407" expanded="true" signature="4625:4687" placeholder="insert into ..." />
+                <marker date="1479185231407" expanded="true" signature="5518:5560" placeholder="delete from ..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sources.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TPG_PROJECT/server_rest/Rest/User/db/sources.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mysqlressourses.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TPG_PROJECT/server_rest/Rest/User/db/mysqlressourses.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="882">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -73,18 +69,69 @@
       <file leaf-file-name="client.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TPG_PROJECT/server_rest/Rest/TPG/client.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1890" max-vertical-offset="3672">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="816" max-vertical-offset="3672">
+              <caret line="116" column="3" selection-start-line="116" selection-start-column="3" selection-end-line="116" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="doc.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source_doc/doc.py">
+      <file leaf-file-name="api_client.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TPG_PROJECT/client_rest/api_client.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.375" vertical-offset="0" max-vertical-offset="2736">
-              <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+            <state vertical-scroll-proportion="-10.167883" vertical-offset="4881" max-vertical-offset="5292">
+              <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
+              <folding>
+                <element signature="e#52#81#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TPG_PROJECT/server_rest/Rest/User/user.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="594" max-vertical-offset="2304">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding>
+                <element signature="e#48#92#0" expanded="true" />
+                <marker date="1479145060037" expanded="true" signature="414:505" placeholder="Insert into ..." />
+                <marker date="1479145060037" expanded="true" signature="999:1071" placeholder="Select * fro..users..." />
+                <marker date="1479145060037" expanded="true" signature="1420:1459" placeholder="update users..." />
+                <marker date="1479145060037" expanded="true" signature="1982:2019" placeholder="delete from ..." />
+                <marker date="1479145060037" expanded="true" signature="2101:2139" placeholder="delete from ..." />
+                <marker date="1479145060037" expanded="true" signature="2746:2785" placeholder="update users..." />
+                <marker date="1479145060037" expanded="true" signature="2991:3022" placeholder="Select * fro..users..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ftp_mqtt.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../Prog_system/OS_PROJECT_S2/ftp_mqtt.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1229" max-vertical-offset="1818">
+              <caret line="97" column="19" selection-start-line="97" selection-start-column="4" selection-end-line="97" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TPG_PROJECT/client_rest/cmd_loop/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+              <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rest-client.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../rest-client.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1008">
+              <caret line="7" column="35" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -122,12 +169,25 @@
         <option value="$PROJECT_DIR$/TPG_PROJECT/server_rest/Rest/User/__init__.py" />
         <option value="$PROJECT_DIR$/TPG_PROJECT/server_rest/Rest/User/db/__init__.py" />
         <option value="$PROJECT_DIR$/TPG_PROJECT/server_rest/Rest/TPG/__init__.py" />
-        <option value="$PROJECT_DIR$/TPG_PROJECT/server_rest/Rest/TPG/client.py" />
         <option value="$PROJECT_DIR$/TPG_PROJECT/server_rest/Rest/User/db/sources.py" />
         <option value="$PROJECT_DIR$/TPG_PROJECT/server_rest/Rest/User/db/mysqlressourses.py" />
-        <option value="$PROJECT_DIR$/TPG_PROJECT/server_rest/server_routes.py" />
-        <option value="$PROJECT_DIR$/source_doc/doc.py" />
         <option value="$PROJECT_DIR$/TPG_PROJECT/server_rest/Rest/User/user.py" />
+        <option value="$PROJECT_DIR$/TPG_PROJECT/client_rest/client/__init__.py" />
+        <option value="$PROJECT_DIR$/TPG_PROJECT/client_rest/http_request/__init__.py" />
+        <option value="$PROJECT_DIR$/TPG_PROJECT/client_rest/http_request/post_request.py" />
+        <option value="$PROJECT_DIR$/TPG_PROJECT/client_rest/http_request/get_request.py" />
+        <option value="$PROJECT_DIR$/TPG_PROJECT/client_rest/client/urlbuilder.py" />
+        <option value="$PROJECT_DIR$/TPG_PROJECT/client_rest/functions/__init__.py" />
+        <option value="$PROJECT_DIR$/TPG_PROJECT/client_rest/functions/http_request/post_request.py" />
+        <option value="$PROJECT_DIR$/source_doc/doc.py" />
+        <option value="$PROJECT_DIR$/TPG_PROJECT/client_rest/functions/user.py" />
+        <option value="$PROJECT_DIR$/TPG_PROJECT/client_rest/functions/client/urlbuilder.py" />
+        <option value="$PROJECT_DIR$/TPG_PROJECT/client_rest/functions/tpg.py" />
+        <option value="$PROJECT_DIR$/../../Prog_system/OS_PROJECT_S2/interpreter/__init__.py" />
+        <option value="$PROJECT_DIR$/TPG_PROJECT/client_rest/cmd_loop/__init__.py" />
+        <option value="$PROJECT_DIR$/TPG_PROJECT/server_rest/Rest/TPG/client.py" />
+        <option value="$PROJECT_DIR$/TPG_PROJECT/server_rest/server_routes.py" />
+        <option value="$PROJECT_DIR$/TPG_PROJECT/client_rest/api_client.py" />
       </list>
     </option>
   </component>
@@ -135,7 +195,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="25" />
+    <option name="x" value="150" />
+    <option name="y" value="1105" />
     <option name="width" value="1600" />
     <option name="height" value="875" />
   </component>
@@ -282,11 +343,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="User" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="db" />
+              <option name="myItemId" value="TPG" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -301,6 +358,120 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="TPG_PROJECT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SD_TPG_rest_clientserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SD_TPG_rest_clientserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TPG_PROJECT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client_rest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SD_TPG_rest_clientserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SD_TPG_rest_clientserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TPG_PROJECT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client_rest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="functions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SD_TPG_rest_clientserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SD_TPG_rest_clientserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TPG_PROJECT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client_rest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="functions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="http_request" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SD_TPG_rest_clientserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SD_TPG_rest_clientserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TPG_PROJECT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client_rest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="functions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SD_TPG_rest_clientserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SD_TPG_rest_clientserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TPG_PROJECT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client_rest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmd_loop" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -324,11 +495,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/TPG_PROJECT/client_rest/functions" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/TPG_PROJECT" />
       <recent name="$PROJECT_DIR$/TPG_PROJECT/packages/server_rest/Rest/User" />
       <recent name="$PROJECT_DIR$/TPG_PROJECT/packages/server_rest/Rest" />
-      <recent name="$PROJECT_DIR$/TPG_PROJECT/packages/server_rest" />
     </key>
   </component>
   <component name="RunManager">
@@ -536,19 +707,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="25" width="1600" height="875" extended-state="6" />
+    <frame x="150" y="1105" width="1600" height="875" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14395887" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14524421" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22924902" sideWeight="0.4325193" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36890647" sideWeight="0.09768637" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22924902" sideWeight="0.56748074" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36890647" sideWeight="0.90231365" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -579,11 +750,52 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/TPG_PROJECT/server_rest/server_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1026" max-vertical-offset="5400">
+          <caret line="0" column="46" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="46" />
+          <folding>
+            <element signature="e#49#58#0" expanded="true" />
+            <marker date="1479185231407" expanded="true" signature="2447:2497" placeholder="Select * fro..subscriptions..." />
+            <marker date="1479185231407" expanded="true" signature="4625:4687" placeholder="insert into ..." />
+            <marker date="1479185231407" expanded="true" signature="5518:5560" placeholder="delete from ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Prog_system/OS_PROJECT_S2/ftp_mqtt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="1872">
+          <caret line="98" column="0" selection-start-line="2" selection-start-column="1" selection-end-line="98" selection-end-column="0" />
+          <folding>
+            <element signature="e#50#60#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TPG_PROJECT/client_rest/api_client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1782">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#52#81#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../rest-client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="522" max-vertical-offset="1008">
+          <caret line="34" column="74" selection-start-line="34" selection-start-column="74" selection-end-line="34" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../../rest-server.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="58" max-vertical-offset="1026">
@@ -602,20 +814,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-16.071428" vertical-offset="378" max-vertical-offset="1026">
           <caret line="46" column="53" selection-start-line="46" selection-start-column="53" selection-end-line="46" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../rest-client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1008">
-          <caret line="34" column="74" selection-start-line="34" selection-start-column="74" selection-end-line="34" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm40/system/python_stubs/-1247972723/__builtin__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.9620852" vertical-offset="47398" max-vertical-offset="92592">
-          <caret line="2470" column="6" selection-start-line="2470" selection-start-column="6" selection-end-line="2470" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -689,62 +887,197 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TPG_PROJECT/server_rest/Rest/TPG/client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3672">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TPG_PROJECT/server_rest/Rest/User/db/sources.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="558">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TPG_PROJECT/server_rest/Rest/User/db/mysqlressourses.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="882">
+        <state vertical-scroll-proportion="-0.48387095" vertical-offset="270" max-vertical-offset="882">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.PyCharm40/system/python_stubs/-1247972723/__builtin__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="12756" max-vertical-offset="92592">
+          <caret line="719" column="8" selection-start-line="719" selection-start-column="8" selection-end-line="719" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TPG_PROJECT/client_rest/functions/client/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="558">
+          <caret line="0" column="46" selection-start-line="0" selection-start-column="46" selection-end-line="0" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TPG_PROJECT/client_rest/functions/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06451613" vertical-offset="0" max-vertical-offset="558">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TPG_PROJECT/client_rest/functions/http_request/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="126">
+          <caret line="0" column="46" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TPG_PROJECT/client_rest/functions/http_request/post_request.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09677419" vertical-offset="0" max-vertical-offset="558">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TPG_PROJECT/client_rest/functions/http_request/get_request.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16129032" vertical-offset="0" max-vertical-offset="558">
+          <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/robotparser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="665" max-vertical-offset="4284">
+          <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TPG_PROJECT/client_rest/functions/tpg.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3316583" vertical-offset="0" max-vertical-offset="1188">
+          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+          <folding>
+            <element signature="e#49#102#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TPG_PROJECT/client_rest/functions/client/urlbuilder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5125628" vertical-offset="0" max-vertical-offset="597">
+          <caret line="17" column="45" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Prog_system/OS_PROJECT_S2/interpreter/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.13073" vertical-offset="54" max-vertical-offset="1764">
+          <caret line="40" column="32" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../rest-client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1008">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Prog_system/OS_PROJECT_S2/ftp_mqtt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1229" max-vertical-offset="1818">
+          <caret line="97" column="19" selection-start-line="97" selection-start-column="4" selection-end-line="97" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TPG_PROJECT/client_rest/cmd_loop/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+          <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TPG_PROJECT/client_rest/functions/user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.75551784" vertical-offset="131" max-vertical-offset="774">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding>
+            <element signature="e#50#105#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TPG_PROJECT/server_rest/Rest/User/user.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2580645" vertical-offset="216" max-vertical-offset="2286">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="594" max-vertical-offset="2304">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
-            <marker date="1479145060037" expanded="true" signature="-1:-1" placeholder="Insert into ..." />
-            <marker date="1479145060037" expanded="true" signature="-1:-1" placeholder="Select * fro..users..." />
-            <marker date="1479145060037" expanded="true" signature="-1:-1" placeholder="update users..." />
-            <marker date="1479145060037" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1479145060037" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1479145060037" expanded="true" signature="-1:-1" placeholder="update users..." />
-            <marker date="1479145060037" expanded="true" signature="-1:-1" placeholder="Select * fro..users..." />
+            <element signature="e#48#92#0" expanded="true" />
+            <marker date="1479145060037" expanded="true" signature="414:505" placeholder="Insert into ..." />
+            <marker date="1479145060037" expanded="true" signature="999:1071" placeholder="Select * fro..users..." />
+            <marker date="1479145060037" expanded="true" signature="1420:1459" placeholder="update users..." />
+            <marker date="1479145060037" expanded="true" signature="1982:2019" placeholder="delete from ..." />
+            <marker date="1479145060037" expanded="true" signature="2101:2139" placeholder="delete from ..." />
+            <marker date="1479145060037" expanded="true" signature="2746:2785" placeholder="update users..." />
+            <marker date="1479145060037" expanded="true" signature="2991:3022" placeholder="Select * fro..users..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TPG_PROJECT/server_rest/Rest/TPG/sources.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TPG_PROJECT/server_rest/Rest/TPG/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="816" max-vertical-offset="3672">
+          <caret line="116" column="3" selection-start-line="116" selection-start-column="3" selection-end-line="116" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source_doc/doc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.375" vertical-offset="0" max-vertical-offset="2736">
-          <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.52681386" vertical-offset="1785" max-vertical-offset="2736">
+          <caret line="127" column="44" selection-start-line="127" selection-start-column="44" selection-end-line="127" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TPG_PROJECT/server_rest/server_routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5483871" vertical-offset="4464" max-vertical-offset="5400">
-          <caret line="272" column="26" selection-start-line="272" selection-start-column="26" selection-end-line="272" selection-end-column="26" />
+        <state vertical-scroll-proportion="-3.107143" vertical-offset="3657" max-vertical-offset="5508">
+          <caret line="208" column="58" selection-start-line="208" selection-start-column="47" selection-end-line="208" selection-end-column="58" />
           <folding>
-            <marker date="1479140936027" expanded="true" signature="2477:2521" placeholder="Select * fro..subscriptions..." />
-            <marker date="1479140936027" expanded="true" signature="4764:4826" placeholder="insert into ..." />
-            <marker date="1479140936027" expanded="true" signature="5910:5952" placeholder="delete from ..." />
+            <element signature="e#49#58#0" expanded="true" />
+            <marker date="1479185231407" expanded="true" signature="2447:2497" placeholder="Select * fro..subscriptions..." />
+            <marker date="1479185231407" expanded="true" signature="4625:4687" placeholder="insert into ..." />
+            <marker date="1479185231407" expanded="true" signature="5518:5560" placeholder="delete from ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TPG_PROJECT/client_rest/api_client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.167883" vertical-offset="4881" max-vertical-offset="5292">
+          <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
+          <folding>
+            <element signature="e#52#81#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -10,7 +10,7 @@ __author__ = 'admin_master'
 @apiParam {USERNAME = string} user's credentials
 @apiParam {PASSWD = string} user's credentials
 
-@apiSuccess {return = string[]} message
+@apiSuccess {return = json} message
 """
 
 """
@@ -22,7 +22,7 @@ __author__ = 'admin_master'
 @apiParam {USERNAME = string} user's credentials
 @apiParam {PASSWD = string} user's credentials
 
-@apiSuccess {return = string[]} message or session
+@apiSuccess {return = json} message or session
 """
 
 """
@@ -34,7 +34,7 @@ __author__ = 'admin_master'
 @apiParam {ID = Integer} user id
 @apiParam {HASH = string} session hash
 
-@apiSuccess {return = string[]} message
+@apiSuccess {return = json} message
 """
 
 """
@@ -46,7 +46,7 @@ __author__ = 'admin_master'
 @apiParam {ID = Integer} user id
 @apiParam {HASH = string} session hash
 
-@apiSuccess {return = string[]} message
+@apiSuccess {return = json} message
 """
 
 """
@@ -58,7 +58,7 @@ __author__ = 'admin_master'
 @apiParam {ID = Integer} user id
 @apiParam {HASH = string} session hash
 
-@apiSuccess {return = string[]} list of available stop
+@apiSuccess {return = json} list of available stop
 """
 
 """
@@ -85,7 +85,7 @@ __author__ = 'admin_master'
 @apiParam   {STOPNAME = string[]}  list of stop
 @apiParam   {CODE = string} optional should be 'stopName' or 'stopCode'
 
-@apiSuccess {return = string[]} List of departure
+@apiSuccess {return = json} List of departure
 """
 
 
@@ -99,7 +99,7 @@ __author__ = 'admin_master'
 @apiParam {HASH = string} session hash
 @apiParam   {STOPCODE = string[]}  list of stop
 
-@apiSuccess {return = string} error code
+@apiSuccess {return = json} error code
 """
 
 
@@ -114,7 +114,7 @@ __author__ = 'admin_master'
 @apiParam   {STOPCODE = string[]}  list of stop
 
 
-@apiSuccess {return = string} error code
+@apiSuccess {return = json} error code
 """
 
 """
@@ -128,13 +128,13 @@ __author__ = 'admin_master'
 @apiParam   {LAT = float[]} list of latitude
 @apiParam   {LONG = float[]} list of longitude
 
-@apiSuccess {return = string[]} list of stops around 500 meters for a location
+@apiSuccess {return = json} list of stops around 500 meters for a location
 """
 
 """
-@api {get} /list/stop/subscribed/nextDeparture/handicaped?id=ID&hash=HASH&stopName=STOPCODE&code=CODE list_next_departure_for_handicaped()
+@api {get} /list/stop/subscribed/nextDeparture/handicapped?id=ID&hash=HASH&stopName=STOPCODE&code=CODE list_next_departure_for_handicaped()
 
-@apiName list_next_departure_for_handicaped
+@apiName list_next_departure_for_handicapped
 @apiGroup TPG
 
 @apiParam {ID = Integer} user id
@@ -143,5 +143,5 @@ __author__ = 'admin_master'
 @apiParam   {CODE = string} optional should be 'stopName' or 'stopCode'
 
 
-@apiSuccess {return = string[]} List of departure with handicapped capabilities
+@apiSuccess {return = json} List of departure with handicapped capabilities
 """
