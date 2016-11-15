@@ -74,11 +74,11 @@ def list_stop_subscribed(datatype):
         return jsonify(error="Bad request.")
     id = int(id)
     if 1 == user.auth_cookie(id, hash):
-        query = "Select * from subscriptions where user_id = %i"
+        query = "Select stop_id from subscriptions where user_id = %i"
         results = mysql.mysql_query(query % id)
         stop_code = []
         for result in results:
-            stop_code.append(result["stop_id"])
+            stop_code.append(result[0])
         return jsonify(stop_subscribed=client.get_stops("stopCode", stop_code))
     return jsonify(error="Bad request.")
 
@@ -90,7 +90,7 @@ def list_stop_subscribed(datatype):
 
 @apiParam   {id = integer} id of the user
 @apiParam   {hash = string} hash code of the cookie
-@apiParam   {stopName = list of string}  list of stop
+@apiParam   {stopCode = list of string}  list of stop
 @apiParam   {code = string} optional should be stopName or stopCode
 
 @apiSuccess {result = list of string} List of departure
@@ -122,7 +122,7 @@ def list_next_departure(datatype):
 
 @apiParam   {id = integer} id of the user
 @apiParam   {hash = string} hash code of the cookie
-@apiParam   {stopName = list of string}  list of stop
+@apiParam   {stopCode = list of string}  list of stop
 @apiParam   {code = string} optional should be stopName or stopCode
 
 @apiSuccess {result = string} error code
@@ -134,9 +134,6 @@ def subscribe():
     id = request.args.get('id')
     hash = request.args.get('hash')
     stop_name = request.args.getlist('stopCode')
-    request_code = request.args.get('code')
-    if None == request_code:
-        request_code = "stopName"
     if None == hash and None == id:
         return jsonify(error="Bad request.")
     id = int(id)
@@ -154,11 +151,9 @@ def subscribe():
 @apiName un_subscribe
 @apiGroup TPG
 
-@apiParam   {stopName = list of string}  list of stop name
 @apiParam   {id = integer} id of the user
 @apiParam   {hash = string} hash code of the cookie
-@apiParam   {stopName = list of string}  list of stop
-@apiParam   {code = string} optional should be stopName or stopCode
+@apiParam   {stopCode = list of string}  list of stop
 
 @apiSuccess {result = string} error code
 """
@@ -168,10 +163,7 @@ def subscribe():
 def un_subscribe():
     id = request.args.get('id')
     hash = request.args.get('hash')
-    request_code = request.args.get('code')
     stop_name = request.args.getlist('stopCode')
-    if None == request_code:
-        stop_name = request.args.getlist('stopCode')
     if None == hash and None == id:
         return jsonify(error="Bad request.")
     id = int(id)
@@ -267,7 +259,7 @@ def __sign_in__():
     passwd = request.form.get('passwd')
     if not None == passwd and not None == username:
         cookie = user.sign_in(username, passwd)
-        if 2 == len(cookie):
+        if 'id' in cookie:
             return jsonify(cookie_hepia_tpg=cookie)
         return jsonify(error=cookie)
     return jsonify(error="Bad request.")
