@@ -82,8 +82,8 @@ __author__ = 'admin_master'
 
 @apiParam {ID = Integer} user id
 @apiParam {HASH = string} session hash
-@apiParam   {STOPNAME = string[]}  list of stop
-@apiParam   {CODE = string} optional should be 'stopName' or 'stopCode'
+@apiParam {STOPNAME = string[]}  list of stop
+@apiParam {CODE = string} optional should be 'stopName' or 'stopCode'
 
 @apiSuccess {return = json} List of departure
 """
@@ -97,7 +97,7 @@ __author__ = 'admin_master'
 
 @apiParam {ID = Integer} user id
 @apiParam {HASH = string} session hash
-@apiParam   {STOPCODE = string[]}  list of stop
+@apiParam {STOPCODE = string[]}  list of stop
 
 @apiSuccess {return = json} error code
 """
@@ -111,7 +111,7 @@ __author__ = 'admin_master'
 
 @apiParam {ID = Integer} user id
 @apiParam {HASH = string} session hash
-@apiParam   {STOPCODE = string[]}  list of stop
+@apiParam {STOPCODE = string[]}  list of stop
 
 
 @apiSuccess {return = json} error code
@@ -125,8 +125,8 @@ __author__ = 'admin_master'
 
 @apiParam {ID = Integer} user id
 @apiParam {HASH = string} session hash
-@apiParam   {LAT = float[]} list of latitude
-@apiParam   {LONG = float[]} list of longitude
+@apiParam {LAT = float[]} list of latitude
+@apiParam {LONG = float[]} list of longitude
 
 @apiSuccess {return = json} list of stops around 500 meters for a location
 """
@@ -139,8 +139,8 @@ __author__ = 'admin_master'
 
 @apiParam {ID = Integer} user id
 @apiParam {HASH = string} session hash
-@apiParam   {STOPCODE = string[]}  list of stop
-@apiParam   {CODE = string} optional should be 'stopName' or 'stopCode'
+@apiParam {STOPCODE = string[]}  list of stop
+@apiParam {CODE = string} optional should be 'stopName' or 'stopCode'
 
 
 @apiSuccess {return = json} List of departure with handicapped capabilities

@@ -48,7 +48,7 @@
             "group": "Success 200",
             "type": "return",
             "allowedValues": [
-              "string[]"
+              "json"
             ],
             "optional": false,
             "field": "list",
@@ -100,7 +100,7 @@
             "group": "Success 200",
             "type": "return",
             "allowedValues": [
-              "string[]"
+              "json"
             ],
             "optional": false,
             "field": "list",
@@ -172,7 +172,7 @@
             "group": "Success 200",
             "type": "return",
             "allowedValues": [
-              "string[]"
+              "json"
             ],
             "optional": false,
             "field": "List",
@@ -187,9 +187,9 @@
   },
   {
     "type": "get",
-    "url": "/list/stop/subscribed/nextDeparture/handicaped?id=ID&hash=HASH&stopName=STOPCODE&code=CODE",
+    "url": "/list/stop/subscribed/nextDeparture/handicapped?id=ID&hash=HASH&stopName=STOPCODE&code=CODE",
     "title": "list_next_departure_for_handicaped()",
-    "name": "list_next_departure_for_handicaped",
+    "name": "list_next_departure_for_handicapped",
     "group": "TPG",
     "parameter": {
       "fields": {
@@ -244,7 +244,7 @@
             "group": "Success 200",
             "type": "return",
             "allowedValues": [
-              "string[]"
+              "json"
             ],
             "optional": false,
             "field": "List",
@@ -358,7 +358,7 @@
             "group": "Success 200",
             "type": "return",
             "allowedValues": [
-              "string"
+              "json"
             ],
             "optional": false,
             "field": "error",
@@ -420,7 +420,7 @@
             "group": "Success 200",
             "type": "return",
             "allowedValues": [
-              "string"
+              "json"
             ],
             "optional": false,
             "field": "error",
@@ -462,7 +462,7 @@
             "group": "Success 200",
             "type": "return",
             "allowedValues": [
-              "string[]"
+              "json"
             ],
             "optional": false,
             "field": "message",
@@ -514,7 +514,7 @@
             "group": "Success 200",
             "type": "return",
             "allowedValues": [
-              "string[]"
+              "json"
             ],
             "optional": false,
             "field": "message",
@@ -556,7 +556,7 @@
             "group": "Success 200",
             "type": "return",
             "allowedValues": [
-              "string[]"
+              "json"
             ],
             "optional": false,
             "field": "message",
@@ -608,7 +608,7 @@
             "group": "Success 200",
             "type": "return",
             "allowedValues": [
-              "string[]"
+              "json"
             ],
             "optional": false,
             "field": "message",
