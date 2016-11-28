@@ -150,26 +150,29 @@ class Main(cmd.Cmd):
                 argv = []
                 if '--handicapped' == args[0] and 2 < len(args):
                     for i in range(2, len(args)):
-                        argv.append(args[1 + 2])
+                        argv.append(args[1])
                     request = tpg.get_handicapped_next_dearture(self.id, self.hash, self.host, self.port, argv, 'stopCode')
                     if 'next_departure_handicaped' in request:
                         for stop in request['next_departure_handicaped']:
                             print("stop name : %s, stop code : %s" % (stop['stop']['stopName'], stop['stop']['stopCode']))
                             for departure in stop['departures']:
-                                print('destination: %s, line number: %i, timestamp : %s' % (departure['line']['destinationName'], departure['line']['lineCode'], departure['timestamp']))
+                                print('destination: %s, line number: %s, timestamp : %s' % (departure['line']['destinationName'], departure['line']['lineCode'], departure['timestamp']))
                     else:
                         print(request['error'])
                     return
                 elif '--list' == args[0] and 1 < len(args):
                     for i in range(1, len(args)):
-                        argv.append(args[i + 1])
+                        argv.append(args[i])
                     request = tpg.get_next_departure(self.id, self.hash, self.host, self.port, argv, 'stopCode')
                     if 'next_departure' in request:
                         if 'next_departure' in request:
                             for stop in request['next_departure']:
                                 print("stop name : %s, stop code : %s" % (stop['stop']['stopName'], stop['stop']['stopCode']))
                                 for departure in stop['departures']:
-                                    print('destination: %s, line number: %i, timestamp : %s' % (departure['line']['destinationName'], departure['line']['lineCode'], departure['timestamp']))
+                                    if 'timestamp' in departure:
+                                        print('destination: %s, line number: %s, timestamp : %s' % (departure['line']['destinationName'], departure['line']['lineCode'], departure['timestamp']))
+                                    if 'waitingTime' in departure:
+                                        print('destination: %s, line number: %s, waiting time : no more' % (departure['line']['destinationName'], departure['line']['lineCode']))
                     else:
                         print(request['error'])
                     return
@@ -265,7 +268,7 @@ class Main(cmd.Cmd):
                     if 'locations' in request:
                         for stops in request['locations']:
                             for stop in stops:
-                                print("stop name : %s, stop code : %s, distance %i" % (stop['stopName'], stop['stopCode'], stop['distance']))
+                                print("stop name : %s, stop code : %s, distance %s" % (stop['stopName'], stop['stopCode'], stop['distance']))
                     else:
                         print(request['error'])
         print("\thelp localisation:\n\t\t--longitude longitude --latitude latitude")
